@@ -1,0 +1,221 @@
+.mian {
+  flex: 1;
+  width: 100%;
+  background: #f0f0f0;
+  overflow: hidden;
+  overflow-y: scroll; }
+  .mian .all_money {
+    background: #fff;
+    height: .98rem;
+    line-height: .98rem;
+    padding-left: .22rem;
+    padding-right: .22rem;
+    color: #333333;
+    font-size: .36rem;
+    border-bottom: solid 1px #f1f1f1;
+    font-weight: 600; }
+    .mian .all_money a {
+      float: right;
+      width: .62rem;
+      height: .34rem;
+      background: url(../images/fubao/zhangdan@2x.png);
+      background-size: 100% 100%;
+      margin-top: .3rem; }
+  .mian .fubao_yu {
+    width: 100%;
+    background: #fff;
+    position: relative;
+    /* display: -webkit-flex;
+    
+    &>div{
+    	margin: .47rem;
+    	flex:1;
+    	img{
+    		width: 100%;
+    	}
+    }
+    &>div:nth-child(1){
+    	text-align: center;
+    } */ }
+    .mian .fubao_yu .myChart_line {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15%; }
+      .mian .fubao_yu .myChart_line .xian {
+        display: inline-block;
+        width: 35px;
+        position: absolute;
+        top: 1.25rem;
+        left: 0.25rem;
+        border-bottom: solid 1px #fbc04f;
+        -webkit-transform: rotate(30deg); }
+      .mian .fubao_yu .myChart_line .heng {
+        position: absolute;
+        top: 1.43rem;
+        left: .9rem;
+        width: 70px;
+        border-bottom: solid 1px #fbc04f; }
+      .mian .fubao_yu .myChart_line .duihuan {
+        position: absolute;
+        top: 1rem;
+        left: 1.7rem;
+        width: 1.5rem;
+        color: #fbc04f; }
+        .mian .fubao_yu .myChart_line .duihuan h6 {
+          font-size: .28rem;
+          margin-bottom: .2rem; }
+        .mian .fubao_yu .myChart_line .duihuan span {
+          font-size: .4rem; }
+    .mian .fubao_yu .fubao_account {
+      width: 100%;
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: flex;
+      -webkit-flex-direction: column; }
+      .mian .fubao_yu .fubao_account dl {
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        flex: 1;
+        padding-top: .4rem; }
+        .mian .fubao_yu .fubao_account dl dt {
+          position: relative; }
+          .mian .fubao_yu .fubao_account dl dt span {
+            padding-left: .4rem;
+            font-size: .24rem; }
+        .mian .fubao_yu .fubao_account dl dd {
+          padding-left: .4rem;
+          margin-top: .19rem;
+          font-size: .36rem;
+          font-weight: 600; }
+      .mian .fubao_yu .fubao_account dl:nth-child(1) dt i {
+        position: absolute;
+        top: .05rem;
+        left: 0;
+        display: inline-block;
+        margin-right: .22rem;
+        width: .26rem;
+        height: .26rem;
+        background: url(../images/fubao/fujinyuan@2x.png) no-repeat center center;
+        background-size: 100% 100%; }
+      .mian .fubao_yu .fubao_account dl:nth-child(1) dd {
+        padding-left: .4rem;
+        margin-top: .19rem;
+        font-size: .38rem;
+        font-weight: 600; }
+      .mian .fubao_yu .fubao_account dl:nth-child(2) dt {
+        position: relative; }
+        .mian .fubao_yu .fubao_account dl:nth-child(2) dt i {
+          position: absolute;
+          display: inline-block;
+          top: .05rem;
+          left: 0;
+          width: .26rem;
+          height: .26rem;
+          background: url(../images/fubao/duihuanyuan@2x.png) no-repeat;
+          background-size: 100% 100%; }
+  .mian .transaction {
+    width: 100%;
+    background: #fff;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex; }
+    .mian .transaction div {
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      box-flex: 1;
+      -webkit-flex: 1;
+      -moz-flex: 1;
+      flex: 1;
+      height: .64rem;
+      line-height: .64rem;
+      text-align: center; }
+      .mian .transaction div span {
+        position: relative;
+        padding-left: .5rem;
+        font-size: .3rem; }
+    .mian .transaction div:nth-child(1) {
+      border-right: solid 1px #f1f1f1; }
+      .mian .transaction div:nth-child(1) i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .4rem;
+        height: .28rem;
+        background: url(../images/fubao/chongzhi@2x.png) no-repeat center center;
+        background-size: 100% 100%; }
+    .mian .transaction div:nth-child(2) {
+      border-right: solid 1px #f1f1f1; }
+      .mian .transaction div:nth-child(2) i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .4rem;
+        height: .28rem;
+        background: url(../images/fubao/nicaiwoshisha@2x.png) no-repeat center center;
+        background-size: 100% 100%; }
+  .mian .record {
+    width: 100%;
+    margin-top: .49rem; }
+    .mian .record .record_ct {
+      width: 100%;
+      background: #fff;
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: flex; }
+      .mian .record .record_ct li {
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        flex: 1;
+        height: 1.02rem;
+        line-height: 1.02rem;
+        position: relative; }
+        .mian .record .record_ct li i {
+          width: .38rem;
+          height: .38rem;
+          position: absolute;
+          top: .32rem;
+          left: .27rem; }
+        .mian .record .record_ct li span {
+          padding-left: .8rem;
+          font-size: .28rem; }
+      .mian .record .record_ct li:nth-child(1) {
+        border-right: solid 1px #f1f1f1; }
+        .mian .record .record_ct li:nth-child(1) i {
+          background: url(../images/fubao/chongzhijilu@2x.png);
+          background-size: 100% 100%; }
+      .mian .record .record_ct li:nth-child(2) i {
+        background: url(../images/fubao/tixianjilu@2x.png);
+        background-size: 100% 100%; }
+    .mian .record .record_ct_tp {
+      margin-top: .49rem;
+      border-bottom: solid 1px #f1f1f1; }
+      .mian .record .record_ct_tp li:nth-child(1) i {
+        background: url(../images/fubao/fubaolingqujilu@2x.png);
+        background-size: 100% 100%; }
+      .mian .record .record_ct_tp li:nth-child(2) i {
+        background: url(../images/fubao/zengpiao@2x.png);
+        background-size: 100% 100%; }
+    .mian .record .record_ct_bt li:nth-child(1) i {
+      background: url(../images/fubao/duihuan@2x.png);
+      background-size: 100% 100%; }
+    .mian .record .record_ct_bt li:nth-child(2) i {
+      background: url(../images/fubao/gengduo@2x.png);
+      background-size: 100% 100%; }
+
+/*# sourceMappingURL=fubao.css.map */

@@ -1,0 +1,86 @@
+header {
+  width: 100%;
+  height: .9rem;
+  line-height: .9rem;
+  position: relative;
+  font-size: .3rem;
+  font-weight: 600; }
+  header a {
+    position: absolute;
+    left: .2rem; }
+  header p {
+    width: 100%;
+    text-align: center;
+    font-size: .34rem;
+    font-weight: 600; }
+  header span {
+    position: absolute;
+    right: .2rem;
+    top: 0; }
+
+.nick_entry {
+  width: 100%;
+  height: .88rem;
+  background: #fff;
+  position: relative; }
+  .nick_entry input {
+    display: block;
+    padding-left: .2rem;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: none;
+    border: none;
+    font-size: .32rem;
+    color: #000; }
+  .nick_entry span {
+    position: absolute;
+    top: .2rem;
+    right: .3rem;
+    color: #fff;
+    padding: .09rem;
+    background: #000000;
+    opacity: .3;
+    border-radius: 50%; }
+
+.bunding {
+  padding: 0.6rem 0.2rem; }
+  .bunding div {
+    width: 100%;
+    height: .88rem;
+    margin-bottom: .45rem; }
+    .bunding div input {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      font-size: .3rem;
+      padding-left: .2rem;
+      border-radius: 3px; }
+  .bunding div:nth-child(1) input {
+    float: left;
+    width: 68%; }
+  .bunding div:nth-child(1) button {
+    float: left;
+    height: 100%;
+    width: 30%;
+    margin-left: .05rem;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #d70b24; }
+
+.complete {
+  padding: 0 .1rem; }
+  .complete button {
+    width: 100%;
+    height: .88rem;
+    border-radius: .1rem;
+    background: #d70b24;
+    outline: none;
+    border: none;
+    color: #fff; }
+
+/*# sourceMappingURL=myPage_nicheng.css.map */

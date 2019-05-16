@@ -1,0 +1,42 @@
+body {
+  background: #fff; }
+
+.dh_record {
+  width: 100%; }
+  .dh_record ul {
+    border-bottom: solid 1px #c1c1c1;
+    padding: .28rem .3rem .02rem; }
+    .dh_record ul li {
+      padding-bottom: .4rem;
+      font-size: .28rem;
+      color: #666666; }
+      .dh_record ul li span {
+        float: right;
+        font-size: .3rem;
+        color: #333333; }
+
+.dj_record {
+  width: 100%;
+  margin-top: .3rem;
+  background: #fff; }
+  .dj_record ul {
+    padding: .28rem .3rem 0; }
+    .dj_record ul li {
+      width: 100%;
+      padding-bottom: .34rem;
+      font-size: .28rem;
+      color: #666666; }
+      .dj_record ul li span {
+        float: right;
+        color: #333333;
+        font-size: .3rem; }
+    .dj_record ul li.dj_record_t {
+      padding-bottom: .17rem;
+     }
+    .dj_record ul li.dj_record_b {
+      padding-top: .14rem;
+      padding-bottom: .2rem; }
+      .dj_record ul li.dj_record_b span {
+        color: #999999; }
+
+/*# sourceMappingURL=fubao_duihuancaipiao.css.map */

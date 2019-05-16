@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<!-- 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏。 -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- 这个主要是根据实际的页面设计的主体色为搭配来进行设置。 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<!-- 忽略页面中的数字识别为电话号码,email识别 -->
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta name="renderer" content="webkit">
+		<!-- 避免IE使用兼容模式 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="HandheldFriendly" content="true">
+		<!-- 微软的老式浏览器 -->
+		<meta name="MobileOptimized" content="320">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- QQ强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- UC强制全屏 -->
+		<!--<meta name="full-screen" content="yes">-->
+		<!-- QQ强制全屏 -->
+		<!--<meta name="x5-fullscreen" content="true">-->
+		<!-- UC应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- QQ应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<link rel="stylesheet" href="css/reset.css">
+		<title>活动结束</title>
+		<style type="text/css">
+			body {
+				height: 100%;
+				line-height: 1;
+			}
+			
+			.end_bg {
+				width: 8.16rem;
+				height: 4.10rem;
+				background: url(../images/img/end.png);
+				background-repeat: no-repeat;
+				background-size: 10rem;
+				background-position: center top;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				margin: 0 auto;
+				margin-top: 1.67rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.text_end{
+				font-size: 0.54rem;
+				color: #333333;
+				text-align: center;
+				margin-top: 1.63rem;
+			}
+			.look_other_activity{
+				width: 8.70rem;
+				height: 1.10rem;
+				font-size:  0.46rem;
+				color: white;
+				text-align: center;
+				background-color: #8BACEF;
+				line-height: 1.10rem;
+				margin: 0 auto;
+				margin-top: 4.53rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="end_bg"></div>
+		<p class="text_end">分享活动已结束</p>
+		<div class="look_other_activity" id="look_other_activity">看看其他空间的活动</div>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/flexible_css.js"></script>
+		<script type="text/javascript" src="js/flexible.js"></script>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="../js/BaseUrl.js"></script>
+		<script type="text/javascript" src="js/activityend.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,137 @@
+.content {
+  padding: .2rem; }
+  .content img {
+    width: 100%; }
+
+h5 {
+  font-size: .3rem;
+  padding: .3rem .3rem .1rem .3rem; }
+
+.text_box {
+  width: 100%;
+  height: 3.98rem;
+  background: #fff; }
+  .text_box textarea {
+    display: block;
+    width: 100%;
+    height: 90%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: .25rem;
+    font-size: .3rem;
+    color: #999; }
+  .text_box p {
+    float: right;
+    padding-right: .3rem;
+    color: #999; }
+
+.upload {
+  margin-top: .2rem;
+  width: 100%;
+  height: 2.98rem;
+  background: #fff;
+  padding: .25rem;
+  color: #999999; }
+  .upload p {
+    width: 100%; }
+    .upload p span {
+      float: right;
+      padding-right: .2rem; }
+  .upload ul {
+    margin-top: .42rem; }
+    .upload ul li {
+      float: left;
+      width: 1.57rem;
+      height: 1.57rem; }
+      .upload ul li img {
+        display: block;
+        width: 100%; }
+
+.up_phone {
+  width: 100%;
+  height: .98rem;
+  background: #fff; }
+  .up_phone input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: none;
+    border: none;
+    font-size: .3rem;
+    padding-left: .3rem; }
+
+.yj_btn {
+  display: block;
+  width: 95%;
+  height: .8rem;
+  background: #d70b24;
+  border: none;
+  outline: none;
+  margin: .3rem auto;
+  border-radius: .1rem;
+  color: #fff;
+  font-size: .3rem; }
+
+.me_img {
+  display: block;
+  width: 4.12rem;
+  height: 4.12rem;
+  margin: 0 auto; }
+
+.mess_list {
+  width: 100%;
+  background: #fff;
+  border-bottom: solid 1px #ccc; }
+  .mess_list li {
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0 .3rem;
+    border-top: solid 1px #ccc;
+    font-size: .3rem; }
+    .mess_list li span {
+      float: right;
+      color: #d70b24; }
+
+.bg_img {
+  background: #fff;
+  padding-top: 1.07rem;
+  padding-bottom: .8rem; }
+
+.haha {
+  width: 100%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: felx;
+  padding: .31rem;
+  margin-top: .17rem;
+  background: #fff; }
+  .haha h3 {
+    display: block;
+    /* white-space: nowrap; */
+    padding-right: .23rem;
+    width: 126px;
+    line-height: 24px; }
+  .haha p {
+    moz-box-flex: 1.0;
+    -webkit-box-flex: 1.0;
+    box-flex: 1.0;
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    font-size: .2rem;
+    line-height: .37rem;
+    color: #333333; }
+
+.footer {
+  width: 100%;
+  font-size: .2rem;
+  margin-top: .8rem;
+  text-align: center;
+  color: #888888; }
+
+/*# sourceMappingURL=myPage_bangzhushuoming.css.map */

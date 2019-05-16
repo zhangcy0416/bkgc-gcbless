@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.RandomMappingGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.RandomMappingGroup" >
+ <!--    <id column="random_number" property="randomNumber" jdbcType="VARCHAR" /> -->
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="random_number" property="randomNumber" jdbcType="VARCHAR" />
+    <result column="groupId" property="groupId" jdbcType="VARCHAR" />
+    <result column="group_type" property="groupType" jdbcType="INTEGER" />
+    <result column="group_url" property="groupURL" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    random_number, groupId,group_url
+  </sql>
+ 
+    <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.bless.RandomMappingGroup" >
+    update Random_Mapping_Group
+    <set >
+      <if test="groupId != null" >
+        groupId = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupURL != null" >
+        group_url = #{groupURL,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where random_number = #{randomNumber,jdbcType=VARCHAR}
+  </update>
+  
+  
+    
+  <insert id="insert" parameterType="com.bkgc.bean.bless.RandomMappingGroup"> 
+    insert into Random_Mapping_Group(random_number) values(#{randomNumber, jdbcType=VARCHAR})
+   </insert>
+   
+   <select id="selectNoGroupId" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List"/>
+    from Random_Mapping_Group
+    where groupId is null;
+   </select>
+  
+  <select id="selectByRandomNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+     select 
+    <include refid="Base_Column_List"/>
+    from Random_Mapping_Group
+    where random_number = #{randomNumber,jdbcType=VARCHAR}
+
+  </select> 
+  
+  
+    <select id="selectByGroupId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+     select 
+    <include refid="Base_Column_List"/>
+    from Random_Mapping_Group
+    where groupId = #{groupId,jdbcType=VARCHAR}
+
+  </select> 
+  
+    <select id="selectEmptyAll" resultType="java.lang.Integer" >
+     select 
+    	count(1)
+    from Random_Mapping_Group
+    where group_url IS NULL
+
+  </select> 
+
+  <insert id="addRandomMapping" parameterType="com.bkgc.bean.bless.RandomMappingGroup">
+      insert into Random_Mapping_Group(id,random_number,groupId,group_type,group_url,create_time) VALUES
+      values(#{id, jdbcType=VARCHAR},#{randomNumber, jdbcType=VARCHAR},#{groupId, jdbcType=VARCHAR},#{groupType, jdbcType=VARCHAR},#{groupUrl, jdbcType=VARCHAR},#{createTime, jdbcType=TIMESTAMP})
+
+  </insert>
+
+  <insert id="addRandomMappingList" parameterType="java.util.List">
+
+      insert into Random_Mapping_Group(id,random_number,groupId,group_type,group_url,create_time) VALUES
+
+      <foreach collection="list" item="item" index="index" separator="," >
+          (#{item.id},#{item.randomNumber},#{item.groupId},#{item.groupType},#{item.groupUrl},#{item.createTime})
+      </foreach>
+  </insert>
+   
+</mapper>

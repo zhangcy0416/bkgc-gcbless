@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>领取福包</title>
+			<meta name="viewport" content="user-scalable=no" >  
+        <link rel="stylesheet" type="text/css" href="../css/styleappsuccess.css" />
+   </head>
+	<body>
+		<div id="appblesssuccess">
+		     <div id="appblesssuccess-t">
+		     		<div class="money">
+		     		  <p  class="description"  id="description" style="font-size: 80px;font-weight: bold;color: #Fcc707">￥<span id="money" style="color:#ec4d35 "></span></p>
+		     	   </div>
+		     	   <div class="info">
+		     		 <!--  <p class="p1" id="title1" style="font-size: 40px" >恭喜你！</p> -->
+		     		  <p class="p2" id="title2" style="font-size:38px;font-weight:bold "><span id="name" ></span>的福包</p>
+<!-- 		     		  <p class="p1" id="title1">恭喜发财，大吉大利</p> -->
+		     	   </div>
+			 </div>
+			 <div id="appblesssuccess-f">
+			 	<p>可以在&nbsp;<a onclick="btnClick1()" style="color: blue">领福包记录</a>&nbsp;页面中找到我哦</p>
+			   <a><img src="../images/img/appbutton.png" onclick="btnClick2()"/></a>
+			 </div>
+			 <div id="footer">
+			 	<img id="adURL" src="../images/img/advi.png"/>
+			 </div>
+		</div>	
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/public.js"></script>
+	<script type="text/javascript">
+
+    var json = {};
+    var arr = location.search.substr(1).split('&');
+        arr.forEach(function(item) {
+            var tmp = item.split('=');
+            json[tmp[0]] = tmp[1];
+        });
+        var amount = json.amount;
+    	var name = json.name;
+    	var adURL = json.adURL; 
+    if(amount =="undefined" || name =="undefined"){
+    	upload();
+    }else{
+    	var delName = decodeURIComponent(name);
+    	$("#money").text(amount);
+    	$("#name").text(delName);
+    }
+	function upload(){
+
+        var json = {};
+        var arr = location.search.substr(1).split('&');
+        arr.forEach(function(item) {
+            var tmp = item.split('=');
+            json[tmp[0]] = tmp[1];
+        });
+        blessURL = json.blessURL;
+        adURL = json.adURL; 
+        if(adURL != null){
+        document.getElementById("adURL").src="https://s20130.8fubao.com"+adURL;
+        }
+        groupId=json.GroupId;
+        expired = json.expired;
+				$.ajax({
+					url:blessURL+"/blessenvelope/getBlessEnvelope",
+				data:{groupId:json.GroupId,userId:json.UserId,expired:json.expired},
+
+					success:function(data){
+						var data=data;
+							if(data.data.type==30){
+								var delName = decodeURIComponent(data.data.beName);
+								$("#money").text(data.data.amount);
+								$("#name").text(delName);
+
+							}else{
+								 var pText=document.getElementById("description");
+								 pText.style.fontSize='34px';　
+								 pText.style.fontWeight="bold";
+								 var des = decodeURIComponent(data.data.description);
+								$("#description").text(des);
+								var title2=document.getElementById("title2");
+								title2.hidden = true;
+							}
+					}
+				})
+} 
+	
+    //2 调用OC注册给的方法JS
+    function btnClick1() {
+        window.WebViewJavascriptBridge.callHandler('showRecord')
+    }
+    function btnClick2() {
+        window.WebViewJavascriptBridge.callHandler('changeLottery')
+    }
+
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function(bridge) {
+        
+    })
+	
+	</script>
+	
+</html>

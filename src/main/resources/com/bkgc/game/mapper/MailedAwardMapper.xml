@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.MailedAwardMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.game.MailedAward" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="courier" property="courier" jdbcType="VARCHAR" />
+    <result column="mail_no" property="mailNo" jdbcType="VARCHAR" />
+    <result column="reward_id" property="rewardId" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="mailing_date" property="mailingDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <resultMap id="BaseMailResultMap" type="com.bkgc.bean.game.MailRewardOrder" >
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="rewardName" property="rewardName" jdbcType="VARCHAR" />
+    <result column="realName" property="realName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="courier" property="courier" jdbcType="VARCHAR" />
+    <result column="mailNo" property="mailNo" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="reward_id" property="rewardId" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, card_id, create_time, description, user_id, courier, mail_no, reward_id,status, address, name, phone, mailing_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward_mailed_award_use_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="selectByCardId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward_mailed_award_use_order
+    where card_id = #{cardId,jdbcType=VARCHAR}
+  </select>
+  
+
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from reward_mailed_award_use_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.game.MailedAward" >
+    insert into reward_mailed_award_use_order (id, card_id, create_time, 
+      description, user_id, courier, 
+      mail_no, reward_id, status,
+      address, name, phone, mailing_date)
+    values (#{id,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{courier,jdbcType=VARCHAR}, 
+      #{mailNo,jdbcType=VARCHAR}, #{rewardId,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},
+      #{address,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{mailingDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.game.MailedAward" >
+    insert into reward_mailed_award_use_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="courier != null" >
+        courier,
+      </if>
+      <if test="mailNo != null" >
+        mail_no,
+      </if>
+      <if test="rewardId != null" >
+        reward_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="mailingDate != null" >
+        mailing_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null" >
+        #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNo != null" >
+        #{mailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardId != null" >
+        #{rewardId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingDate != null" >
+        #{mailingDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.MailedAward" >
+    update reward_mailed_award_use_order
+    <set >
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courier != null" >
+        courier = #{courier,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNo != null" >
+        mail_no = #{mailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardId != null" >
+        reward_id = #{rewardId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailingDate != null" >
+        mailing_date = #{mailingDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.MailedAward" >
+    update reward_mailed_award_use_order
+    set card_id = #{cardId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      courier = #{courier,jdbcType=VARCHAR},
+      mail_no = #{mailNo,jdbcType=VARCHAR},
+      reward_id = #{rewardId,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mailing_date = #{mailingDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getmailRewardOrderList" resultMap="BaseMailResultMap" parameterType="com.bkgc.bean.game.MailRewardOrder" >
+    SELECT
+    rmau.id,
+    rmau.create_time createTime,
+    rmau.courier,
+    rmau.mail_no mailNo,
+    reward. NAME rewardName,
+    rmau.name realName,
+    rmau.address,
+    rmau.phone,
+    rmau.user_id,
+    rmau.reward_id,
+    rmau.card_id,
+    rmau.status
+    FROM
+    reward_mailed_award_use_order rmau
+    LEFT JOIN reward ON reward.id = rmau.reward_id
+    WHERE 1 = 1
+    <if test="realName != null and realName != ''" >
+    AND  rmau.Name = #{realName,jdbcType=VARCHAR}
+    </if>
+    <if test="phone != null and phone != ''" >
+      AND  rmau.Phone = #{phone,jdbcType=VARCHAR}
+    </if>
+    <if test="startDateTime!=null and startDateTime != ''">
+      and  rmau.create_time &gt;= #{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null and endDateTime != ''">
+      and  rmau.create_time &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="status != null" >
+      and  rmau.status = #{status,jdbcType=INTEGER}
+    </if>
+    order by rmau.create_time desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
+
+
+  <select id="getmailRewardOrderListCount" resultType="java.lang.Integer"  parameterType="com.bkgc.bean.game.MailRewardOrder" >
+    SELECT
+    COUNT(1)
+    FROM
+    reward_mailed_award_use_order rmau
+    LEFT JOIN reward ON reward.id = rmau.reward_id
+    WHERE 1 = 1
+    <if test="realName != null and realName != ''" >
+      AND  rmau.Name = #{realName,jdbcType=VARCHAR}
+    </if>
+    <if test="phone != null and phone != ''" >
+      AND  rmau.Phone = #{phone,jdbcType=VARCHAR}
+    </if>
+    <if test="startDateTime!=null and startDateTime != ''">
+      and  rmau.create_time &gt;= #{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null and endDateTime != ''">
+      and  rmau.create_time &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="status != null" >
+      and  rmau.status = #{status,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="selectByCardIdAndUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from reward_mailed_award_use_order
+    where card_id = #{cardId,jdbcType=VARCHAR}
+    and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+
+
+
+</mapper>

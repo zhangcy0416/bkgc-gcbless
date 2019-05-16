@@ -1,0 +1,83 @@
+.my_head {
+  width: 100%;
+  height: 2.8rem;
+  background: url(../images/wode/jinggebeijing@2x.png);
+  background-size: 100% 100%; }
+  .my_head .my_head_message {
+    width: 100%; }
+    .my_head .my_head_message > div {
+      float: left; }
+    .my_head .my_head_message .my_head_photo {
+      width: 1.38rem;
+      height: 1.38rem;
+      margin: .62rem .45rem 0 .5rem; }
+      .my_head .my_head_message .my_head_photo img {
+        width: 100%;
+        border-radius: 50%; }
+    .my_head .my_head_message .my_seat {
+      margin-top: .92rem;
+      color: #ffffff; }
+      .my_head .my_head_message .my_seat p {
+        font-size: .36rem;
+        font-weight: 600; }
+      .my_head .my_head_message .my_seat span {
+        display: block;
+        width: .22rem;
+        height: .23rem;
+        padding-top: .2rem; }
+        .my_head .my_head_message .my_seat span img {
+          width: 100%; }
+
+.my_handle {
+  width: 100%; }
+  .my_handle > div {
+    width: 100%;
+    height: 2rem;
+    background: #fff;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: felx;
+    border-bottom: solid 1px #f1f1f1; }
+    .my_handle > div a:nth-child(1) {
+      border: none; }
+    .my_handle > div a {
+      display: block;
+      -moz-box-flex: 1.0;
+      -webkit-box-flex: 1.0;
+      box-flex: 1.0;
+      -moz-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      -moz-box-pack: center;
+      -webkit-box-pack: center;
+      box-pack: center;
+      text-align: center;
+      padding-top: .54rem;
+      border-left: solid 1px #f1f1f1; }
+      .my_handle > div a img {
+        display: block;
+        width: .5rem;
+        height: .5rem;
+        margin: 0 auto; }
+      .my_handle > div a figure {
+        margin-top: .2rem;
+        font-size: .28rem;
+        color: #000; }
+  .my_handle > div:nth-child(1) {
+    margin-top: .3rem; }
+
+.tui_btn {
+  display: block;
+  width: 100%;
+  height: .9rem;
+  outline: none;
+  background: #fff;
+  border: none;
+  margin-top: .9rem;
+  font-size: .3rem;
+  color: #666; }
+
+/*# sourceMappingURL=myPage.css.map */

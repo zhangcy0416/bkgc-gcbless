@@ -1,0 +1,165 @@
+html,
+body {
+	height: 100%;
+	line-height: 1;
+}
+
+#getfubao_bg {
+	width: 10rem;
+	height: 100%;
+	background: url('http://oss.8fubao.com/envelope/img/fubao_bg.png');
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#getfubao_bg:after {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: .293rem;
+	content: '';
+	background: url('http://oss.8fubao.com/envelope/img/arrow-shadow.png') no-repeat center bottom;
+	background-size: cover;
+}
+
+.getfubao_describe {
+	width: 100%;
+	display: flex;
+	margin-top: 6rem;
+	flex-direction: column;
+	align-items: center;
+}
+
+.getfubao_view {
+	text-align: center;
+	font-size: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.getfubao_font {
+	color: #fff;
+	margin-top: 0.1rem;
+	font-size: 0.4rem;
+}
+
+.getfubao_company_font {
+	color: #44091b;
+	font-size: 1.00rem;
+	font-weight: bold;
+}
+
+.getfubao_amount {
+	width: 5.6rem;
+	height: 3.11rem;
+	background: #FFFFFF;
+	margin-top: 0.64rem;
+	border-radius: 0.14rem;
+	position: relative;
+}
+
+.amount_num {
+	color: #631321;
+	font-size: 1.2rem;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	margin-top: 0.43rem;
+}
+
+#getfubao_failed {
+	position: absolute;
+	left: 15%;
+	right: 15%;
+	top: 25%;
+	color: #f97976;
+	font-size: 0.5rem;
+	text-align: center;
+}
+
+.getfubao_bottom_view {
+	background: #f5edec;
+	width: 100%;
+	height: 0.69rem;
+	position: absolute;
+	bottom: 0;
+	text-align: right;
+	line-height: 0.69rem;
+	border-radius: 0 0 0.14rem 0.14rem;
+}
+
+.fubao_bottom {
+	color: #999999;
+	font-size: 0.27rem;
+	margin-right: 0.2rem;
+}
+
+.fubao_ticket_text {
+	width: 100%;
+	text-align: center;
+	color: #F97976;
+	font-size: 0.32rem;
+	margin-top: 0.27rem;
+}
+
+.exchange_ticket {
+	background-color: white;
+	width: 8.56rem;
+	height: 1.453rem;
+	background: url("http://oss.8fubao.com/envelope/img/button.png");
+	border: none;
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	background-size: contain;
+	color: #3e0821;
+	font-size: 0.59rem;
+	margin-top: 0.667rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.exchange_ticket:active {
+	background-color: white;
+	width: 8.56rem;
+	height: 1.453rem;
+	background: url("http://oss.8fubao.com/envelope/img/button_press.png");
+	border: none;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	background-size: contain;
+	color: #3e0821;
+	font-size: 0.59rem;
+	margin-top: 0.667rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bottom_view {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -1.7rem;
+}
+
+.startGameBtn {
+	width: 1.21rem;
+	height: 1.21rem;
+	position: relative;
+}
+
+.up {
+	padding-top: 0.05rem;
+	width: 0.70rem;
+	height: 0.28rem;
+}

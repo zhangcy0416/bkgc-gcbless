@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.RewardMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.game.Reward" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="expireDay" property="expireDay" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name,type, description, status, grade,expireDay,price,weight
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from reward
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.game.Reward" >
+    insert into reward (id, code, name, type,
+      description, status, grade,price
+      )
+    values (#{id,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+      #{description,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{grade,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.game.Reward" >
+    insert into reward
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.Reward" >
+    update reward
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.Reward" >
+    update reward
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+   <select id="selectByRewardType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward
+    where type = #{rewardType,jdbcType=VARCHAR}
+  </select> 
+
+  <select id="queryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from reward
+  </select>
+  
+  
+   <select id="selectByReward" resultMap="BaseResultMap" parameterType="com.bkgc.bean.game.Reward" >
+	select
+		 r.* 
+	from reward r LEFT JOIN reward_of_user rof on r.id = rof.reward_id
+	where 1=1  and rof.status=0
+	   <if test="code != null" >
+        and r.code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null" >
+       and  r.name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+       and  r.type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="description != null" >
+       and  r.description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+       and  r.status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="grade != null" >
+       and r.grade = #{grade,jdbcType=INTEGER}
+      </if>
+      <if test="price != null" >
+       and  r.price = #{price,jdbcType=DECIMAL}
+      </if>
+      <if test="guid != null" >
+       and  rof.user_id = #{guid,jdbcType=DECIMAL}
+      </if>
+	GROUP BY `code`
+  </select> 
+  
+  
+</mapper>

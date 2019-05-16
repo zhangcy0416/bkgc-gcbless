@@ -1,0 +1,105 @@
+.main {
+  width: 100%; }
+  .main .guaiguai {
+    padding: 0.4rem 0 .1rem .4rem;
+    color: #999999;
+    font-size: .3rem; }
+  .main .balance {
+    height: 1.1rem;
+    line-height: 1.1rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    position: relative;
+    background: #fff; }
+    .main .balance i {
+      position: absolute;
+      width: .54rem;
+      height: .45rem;
+      top: .3rem;
+      left: .3rem;
+      background: url(../images/fubayixia/zhanghuyue@2x.png);
+      background-size: 100% 100%; }
+    .main .balance div {
+      padding-left: .7rem;
+      font-size: .3rem;
+      color: #333333; }
+      .main .balance div span {
+        float: right;
+        font-size: .36rem;
+        color: #999; }
+  .main .rechargeable {
+    width: 100%;
+    background: #fff; }
+    .main .rechargeable .rechargeable_c_jine {
+      margin-left: .2rem;
+      margin-right: .2rem;
+      height: 1rem;
+      line-height: 1rem;
+      border-bottom: solid 1px #dadada; }
+      .main .rechargeable .rechargeable_c_jine span {
+        padding-left: .2rem;
+        font-size: .3rem; }
+      .main .rechargeable .rechargeable_c_jine input {
+        margin-left: 20px;
+        border: none;
+        outline: none;
+        background: none; }
+    .main .rechargeable .rechargeable_list {
+      width: 100%;
+      display: -moz-box;
+      display: -webkit-box;
+      display: box;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: felx;
+      padding-top: .66rem;
+      padding-bottom: .86rem; }
+      .main .rechargeable .rechargeable_list > div {
+        -moz-box-flex: 1.0;
+        -webkit-box-flex: 1.0;
+        box-flex: 1.0;
+        -moz-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        margin: 0 .38rem;
+        text-align: center;
+        line-height: 1.2rem;
+        font-size: .36rem;
+        font-weight: 600;
+        color: #fbc04f; }
+        .main .rechargeable .rechargeable_list > div input {
+          display: none; }
+        .main .rechargeable .rechargeable_list > div label {
+          display: inline-block;
+          width: 1.66rem;
+          height: 1.2rem;
+          border: solid 1px #fbc04f;
+          border-radius: .2rem; }
+        .main .rechargeable .rechargeable_list > div .mp[type="radio"]:checked + label {
+          background: #fbc04f;
+          color: #fff; }
+  .main .way > div {
+    height: 1.1rem;
+    background: #fff;
+    color: #333333;
+    border-bottom: solid 1px #dadada;
+    padding-left: .2rem; }
+    .main .way > div img {
+      margin-top: .27rem;
+      height: .5rem; }
+  .main .way > div span {
+    float: right;
+    padding-right: .2rem; }
+  .main .chong_btn {
+    display: block;
+    width: 95%;
+    height: .8rem;
+    margin: .7rem auto;
+    border: none;
+    border-radius: .1rem;
+    background: #fbc04f;
+    outline: none;
+    font-size: .34rem;
+    color: #fff; }
+
+/*# sourceMappingURL=fubao_recharge.css.map */

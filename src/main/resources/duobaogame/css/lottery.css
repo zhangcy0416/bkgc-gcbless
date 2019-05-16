@@ -1,0 +1,813 @@
+@keyframes dialogZoomOut {
+    0% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    50% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-moz-keyframes dialogZoomOut {
+    0% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    50% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes dialogZoomOut {
+    0% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    50% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-o-keyframes dialogZoomOut {
+    0% {
+        -webkit-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    50% {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.dialogZoomOut {
+    animation: dialogZoomOut .4s cubic-bezier(0.27, 1.12, 0.32, 1.5);
+    -webkit-animation: dialogZoomOut .4s cubic-bezier(0.27, 1.12, 0.32, 1.5);
+}
+
+@keyframes toastShow {
+    from {
+        top: 100%;
+        opacity: .5
+    }
+    to {
+        top: 60%;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes toastShow {
+    from {
+        top: 100%;
+        opacity: .5
+    }
+    to {
+        top: 60%;
+        opacity: 1
+    }
+}
+
+@-moz-keyframes toastShow {
+    from {
+        top: 100%;
+        opacity: .5
+    }
+    to {
+        top: 60%;
+        opacity: 1
+    }
+}
+
+@-ms-keyframes toastShow {
+    from {
+        top: 100%;
+        opacity: .5
+    }
+    to {
+        top: 60%;
+        opacity: 1
+    }
+}
+
+* {
+    -o-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    background: url('http://oss.8fubao.com/duobao/img/bg.png');
+    width: 10rem;
+    height: 27.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.header {
+    /*margin-top: -0.8rem;*/
+    width: 10rem;
+    height: 4.35rem;
+    background: url('http://oss.8fubao.com/duobao/img/header.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.body_nor {
+    position: relative;
+    width: 9.11rem;
+    height: 9.39rem;
+    background: url('http://oss.8fubao.com/duobao/img/door_nor.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    z-index: 3;
+}
+
+.body_blink {
+    position: relative;
+    width: 9.11rem;
+    height: 9.39rem;
+    background: url('http://oss.8fubao.com/duobao/img/door_blink.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    z-index: 3;
+}
+
+.footer {
+    z-index: 1;
+    margin-top: -0.6rem;
+    width: 9.18rem;
+    height: 2.51rem;
+    background: url('http://oss.8fubao.com/duobao/img/footer.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.awards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('http://oss.8fubao.com/duobao/img/awards-new.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    z-index: 5;
+}
+
+.awards_container {
+    position: relative;
+    width: 6.99rem;
+    height: 8.01rem;
+    margin-left: 1.11rem;
+    margin-top: 0.75rem;
+}
+
+.bg_shining {
+    background: url('http://oss.8fubao.com/duobao/img/bg_shining.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    -webkit-animation: bgRotate 20s linear infinite;
+    animation: bgRotate 20s linear infinite;
+}
+
+@-webkit-keyframes bgRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bgRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+tr {
+    width: 6.99rem;
+    height: 2rem;
+}
+
+td {
+    width: 2.33rem;
+    height: 2rem;
+}
+
+table {
+    z-index: 4;
+}
+
+.start {
+    background: url('http://oss.8fubao.com/duobao/img/go_nor.png');
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+}
+
+.start_clicked {
+    background: url("http://oss.8fubao.com/duobao/img/go_click.png");
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    z-index: 6;
+}
+
+.selected {
+    background: url('http://oss.8fubao.com/duobao/img/award_selected.png');
+    overflow: hidden;
+    background-position: center top;
+    background-repeat: no-repeat;
+    -webkit-background-size: 80% 90%;
+    -moz-background-size: 80% 90%;
+    background-size: 80% 90%;
+    /*z-index: 1500;*/
+}
+
+.footer_inner {
+    margin-top: 0.7rem;
+    margin-left: 0.6rem;
+    margin-right: 0.2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.my_fubao {
+    position: relative;
+    width: 2.77rem;
+    height: 1.56rem;
+    flex: 9;
+    background: url('http://oss.8fubao.com/duobao/img/fubao.png');
+    overflow: hidden;
+    background-position: left center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    z-index: 1;
+}
+
+#fubao_amount {
+    position: absolute;
+    top: 48%;
+    left: 36%;
+    color: white;
+    font-size: 0.5rem;
+}
+
+.progress {
+    padding: 0.03rem;
+    height: 0.18rem;
+    width: 6.09rem;
+    border: solid;
+    border-radius: 0.32rem;
+    border-width: 0.03rem;
+    border-color: #0083AF;
+    background: transparent;
+    margin-top: 3rem;
+}
+
+.progress_bar {
+    width: 0;
+    height: 100%;
+    background-color: #ff00ff;
+    border-radius: 0.22rem;
+    position: relative;
+}
+
+.progress_value {
+    position: absolute;
+    right: -0.1rem;
+    top: 0.26rem;
+    text-align: start;
+    color: #F4F5FB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.2rem;
+}
+
+.triangle {
+    content: "";
+    border-bottom: 0.12rem solid #ff00ff;
+    border-right: 0.12rem solid transparent;
+    border-left: 0.12rem solid transparent;
+}
+
+.award_list {
+    /*flex: 1;*/
+    height: 1rem;
+    overflow-y: scroll;
+}
+
+#award_record > div {
+    display: flex;
+    flex-direction: row;
+}
+
+#award_record > div > img {
+    height: 0.4rem;
+    width: 0.4rem;
+}
+
+#award_record > div > div {
+    color: white;
+    font-size: 0.3rem;
+}
+
+.animate-scale {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+}
+
+.noscroll,
+.noscroll body {
+    overflow: hidden;
+}
+
+.noscroll body {
+    position: relative;
+}
+
+.modal_bg {
+    background-color: rgba(0, 0, 0, .8);
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.modal_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('http://oss.8fubao.com/duobao/img/zhongjiang_bg.png');
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+}
+
+.award {
+    width: 35%;
+}
+
+.btns {
+    position: relative;
+    margin-top: 0.5rem;
+    width: 6.5rem;
+    height: 1rem;
+}
+
+.btn_one {
+    position: absolute;
+    width: 2.96rem;
+    height: 1.03rem;
+    left: 1.77rem;
+    background: url("http://oss.8fubao.com/duobao/img/play_again_nor.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+    font-size: 18px;
+    color: white;
+}
+
+.btn_one:active {
+    position: absolute;
+    width: 2.96rem;
+    height: 1.03rem;
+    left: 1.77rem;
+    background: url("http://oss.8fubao.com/duobao/img/play_again_click.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+    font-size: 18px;
+    color: white;
+}
+
+.btn_left {
+    position: absolute;
+    width: 2.96rem;
+    height: 1.03rem;
+    line-height: 1.03rem;
+    background: url("http://oss.8fubao.com/duobao/img/use_now_nor.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+    font-size: 18px;
+    color: white;
+}
+
+.btn_left:active {
+    background: url("http://oss.8fubao.com/duobao/img/use_now_click.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+}
+
+.btn_right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.96rem;
+    height: 1.03rem;
+    line-height: 1.03rem;
+    background: url("http://oss.8fubao.com/duobao/img/play_again_nor.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+    font-size: 18px;
+    color: white;
+}
+
+.btn_right:active {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2.96rem;
+    height: 1.03rem;
+    background: url("http://oss.8fubao.com/duobao/img/play_again_click.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    padding: 0;
+    border: none;
+}
+
+.toast-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    top: 60%;
+    width: 100%;
+    z-index: 100;
+    animation: toastShow .3s linear;
+    -webkit-animation: toastShow .3s linear;
+}
+
+.toast {
+    background: rgba(0, 0, 0, .8);
+    padding: 5px;
+    border: solid;
+    border-width: 0;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+}
+
+#cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: white;
+    z-index: 99999;
+}
+
+.spinner {
+    margin: 100px auto 0;
+    width: 150px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 30px;
+    height: 30px;
+    background-color: #67CF22;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+.btn_disabled {
+    -webkit-filter: grayscale(30%);
+    -moz-filter: grayscale(30%);
+    -ms-filter: grayscale(30%);
+    -o-filter: grayscale(30%);
+    filter: grayscale(30%);
+    filter: gray;
+}
+
+.zhongjiang_title {
+    color: #FFEF35;
+    font-size: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.zhongjiang_tip {
+    color: #FEFEFE;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 0.45rem;
+    margin-top: 0.2rem;
+}
+
+/*福包充值相关*/
+
+.payment_container {
+    width: 7.2rem;
+    height: 7.2rem;
+    background: #fffeee;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    top: 3.5rem;
+    left: 50%;
+    margin-left: -3.6rem;
+}
+
+.payment_container img {
+    margin-top: 0.88rem;
+    width: auto;
+    height: auto;
+    max-width: 60%;
+}
+
+.payment_text {
+    margin-top: 0.88rem;
+    width: auto;
+    height: auto;
+    max-width: 60%;
+}
+
+.payment_btns {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 1.22rem;
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+}
+
+.payment_btn_left {
+    flex: 1;
+    height: 1.22rem;
+    border-top: solid 1px #d9d9d9;
+    border-right: solid 1px #d9d9d9;
+    color: #FD4733;
+    text-align: center;
+    line-height: 1.22rem;
+    font-size: 0.45rem;
+    box-sizing: border-box;
+}
+
+.payment_btn_right {
+    flex: 1;
+    height: 1.22rem;
+    border-top: solid 1px #d9d9d9;
+    line-height: 1.22rem;
+    text-align: center;
+    color: #9a9a9a;
+    font-size: 0.45rem;
+}
+
+.payment_btn_left:hover {
+    color: #e62914;
+}
+
+.payment_btn_right:hover {
+    color: #8b8b8b;
+}
+
+.Loading-container,
+.Loading {
+    width: 54px;
+    height: 54px;
+}
+
+.Loading {
+    position: absolute;
+    z-index: 5;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    background-position-x: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-animation: Loading-3Gfbr_0 1.5s normal infinite steps(31);
+    animation: Loading-3Gfbr_0 1.5s normal infinite steps(31)
+}
+
+@-webkit-keyframes Loading-3Gfbr_0 {
+    0% {
+        background-position-x: 0
+    }
+    to {
+        background-position-x: 100%
+    }
+}
+
+@keyframes Loading-3Gfbr_0 {
+    0% {
+        background-position-x: 0
+    }
+    to {
+        background-position-x: 100%
+    }
+}
+
+.Loading-root {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+}
+
+.Loading-root.Loading-root-2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8888;
+    width: 100%;
+    height: 100%;
+}
+
+.offline_bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    background-image: url('http://oss.8fubao.com/duobao/img/activity_offline_bg.png');
+}
+
+.offline_page {
+    width: 56%;
+    position: absolute;
+    top: 20%;
+    left: 22%;
+}

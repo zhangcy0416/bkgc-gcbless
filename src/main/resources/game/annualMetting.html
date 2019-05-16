@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>年会</title>
+    <script src="/envelope/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div align="center">
+    <table id="validTable">
+        <tr><td><input type="text"  id="vt1" placeholder="填写自助机"></td><td>&nbsp;&nbsp;<button id="addMachineId">添加</button></td></tr>
+    </table>
+</div>
+
+<div align="center">
+    <select name="websocket" id="websocket" >
+        <option value="ws://localhost:40000/getBlessAndAwad/manager">ws://localhost:30000/getBlessAndAwad/manager</option>
+        <option value="ws://123.56.82.85:40000/getBlessAndAwad/manager">ws://123.56.82.85:30000/getBlessAndAwad/manager</option>
+        <option value="ws://123.57.229.241:40000/getBlessAndAwad/manager">ws://123.57.229.241:30000/getBlessAndAwad/manager</option>
+        <option value="wss://123.57.229.241:40000/getBlessAndAwad/manager">wss://123.57.229.241:30000/getBlessAndAwad/manager</option>
+    </select>
+    <button id="wsopen">连接websocket</button>
+    <!--<input type="text" id="websocket" placeholder="填写webscoket连接URL"></td><td>&nbsp;&nbsp;<button id="wsopen">连接websocket</button>-->
+</div>
+
+<div align="center">
+    <button id="machineIdsSub">提交自助机</button>
+</div>
+<br>
+
+<div align="center">
+    <button id="start">年会启动</button>
+</div>
+<br>
+<div align="center">
+    <button id="pause">弹幕暂停</button>
+</div>
+
+<br>
+<div align="center">
+    <select name="timeout" id="timeout" >
+        <option value="" selected="selected">二维码显示时间</option>
+
+        <option value="60000">一分钟</option>
+        <option value="120000">二分钟</option>
+        <option value="180000">三分钟</option>
+        <option value="240000">四分钟</option>
+        <option value="300000">五分钟</option>
+    </select>
+    <button id="qrCode">生成二维码</button>
+</div>
+
+<div id="message"></div>
+
+<script type="text/javascript" src="js/activity.js"></script>
+
+</body>
+
+</html>

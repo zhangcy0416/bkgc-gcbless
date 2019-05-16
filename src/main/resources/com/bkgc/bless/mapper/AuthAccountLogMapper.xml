@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.AuthAccountLogMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.account.AuthAccountLog" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Amount" property="amount" jdbcType="DECIMAL" />
+    <result column="AmountType" property="amounttype" jdbcType="INTEGER" />
+    <result column="InWay" property="inway" jdbcType="VARCHAR" />
+    <result column="OutWay" property="outway" jdbcType="VARCHAR" />
+    <result column="ValidCode" property="validcode" jdbcType="VARCHAR" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="AccountId" property="accountid" jdbcType="VARCHAR" />
+    <result column="Operator" property="operator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, CreateTime, Amount, AmountType, InWay, OutWay, ValidCode, Remark, AccountId, 
+    Operator
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_AccountLog
+    
+    where 1 = 1
+    <if test="id != null">
+    and Id = #{id,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <select id="selectByRemark" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_AccountLog
+    
+    where 1 = 1
+    <if test="id != null">
+    and Remark = #{remark,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <select id="getSumAmount" resultType="java.math.BigDecimal" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select SUM(Amount)
+    from Auth_AccountLog
+    where 1=1
+    <if test="createtime != null" >
+        and CreateTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="amounttype != null" >
+        and AmountType = #{amounttype,jdbcType=INTEGER}
+      </if>
+      <if test="inway != null" >
+        and InWay = #{inway,jdbcType=VARCHAR}
+      </if>
+      <if test="outway != null" >
+        and OutWay = #{outway,jdbcType=VARCHAR}
+      </if>
+      <if test="validcode != null" >
+        and ValidCode = #{validcode,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountid != null" >
+        and AccountId = #{accountid,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null" >
+        and Operator = #{operator,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+   <select id="getDepositRecord" resultMap="BaseResultMap" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_AccountLog
+    where 1=1
+        and AccountId = #{accountid,jdbcType=VARCHAR} and OutWay is NULL
+        and (InWay='银联' or InWay='微信' or InWay='支付宝')
+        order by CreateTime desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+     
+  </select>
+  
+   <select id="countDepositRecord" resultType="java.lang.Integer" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select count(1)
+    from Auth_AccountLog
+    where 1=1
+       and AccountId = #{accountid,jdbcType=VARCHAR} and OutWay is NULL
+       and (InWay='银联' or InWay='微信' or InWay='支付宝')
+  </select>
+  
+   <select id="getWithdrawRecord" resultMap="BaseResultMap" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select 
+    	<include refid="Base_Column_List" />
+    from Auth_AccountLog
+    where 1=1
+       and AccountId = #{accountid,jdbcType=VARCHAR} AND InWay IS NULL AND OutWay='提现'
+       order by CreateTime desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+   <select id="getLotteryAwardRecord" resultMap="BaseResultMap" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select 
+		<include refid="Base_Column_List" />
+    from Auth_AccountLog
+    where 1=1
+       and AccountId = #{accountid,jdbcType=VARCHAR} and InWay='彩票兑奖'
+       order by CreateTime desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+   <select id="countWithdrawRecord" resultType="java.lang.Integer" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select count(1)
+    from Auth_AccountLog
+    where 1=1
+       and AccountId = #{accountid,jdbcType=VARCHAR} and OutWay='提现' 
+  </select>
+  
+  <select id="countLotteryAwardRecord" resultType="java.lang.Integer" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select count(1)
+    from Auth_AccountLog
+    where 1=1
+     and AccountId = #{accountid,jdbcType=VARCHAR} and InWay='彩票兑奖'
+  </select>
+   
+  <select id="count" resultType="java.lang.Integer" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select count(1)
+    from Auth_AccountLog
+    where 1=1
+     <if test="createtime != null" >
+        and CreateTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="amounttype != null" >
+        and AmountType = #{amounttype,jdbcType=INTEGER}
+      </if>
+      <if test="inway != null" >
+        and InWay = #{inway,jdbcType=VARCHAR}
+      </if>
+      <if test="outway != null" >
+        and OutWay = #{outway,jdbcType=VARCHAR}
+      </if>
+      <if test="validcode != null" >
+        and ValidCode = #{validcode,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountid != null" >
+        and AccountId = #{accountid,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null" >
+        and Operator = #{operator,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  
+  
+   <select id="searchRecords" resultMap="BaseResultMap" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_AccountLog
+    where 1=1
+     <if test="createtime != null" >
+        and CreateTime = #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="amounttype != null" >
+        and AmountType = #{amounttype,jdbcType=INTEGER}
+      </if>
+      <if test="inway != null" >
+        and InWay = #{inway,jdbcType=VARCHAR}
+      </if>
+      <if test="outway != null" >
+        and OutWay = #{outway,jdbcType=VARCHAR}
+      </if>
+      <if test="validcode != null" >
+        and ValidCode = #{validcode,jdbcType=VARCHAR}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="accountid != null" >
+        and AccountId = #{accountid,jdbcType=VARCHAR}
+      </if>
+      <if test="operator != null" >
+        and Operator = #{operator,jdbcType=VARCHAR}
+      </if>
+      ORDER BY CreateTime desc 
+      <if test="pageStart != null and pageSize!=null" > 
+            limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+       </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Auth_AccountLog
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    insert into Auth_AccountLog (Id, CreateTime, Amount, 
+      AmountType, InWay, OutWay, 
+      ValidCode, Remark, AccountId, 
+      Operator)
+    values (#{id,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{amount,jdbcType=DECIMAL}, 
+      #{amounttype,jdbcType=INTEGER}, #{inway,jdbcType=VARCHAR}, #{outway,jdbcType=VARCHAR}, 
+      #{validcode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{accountid,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    insert into Auth_AccountLog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="amounttype != null" >
+        AmountType,
+      </if>
+      <if test="inway != null" >
+        InWay,
+      </if>
+      <if test="outway != null" >
+        OutWay,
+      </if>
+      <if test="validcode != null" >
+        ValidCode,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="accountid != null" >
+        AccountId,
+      </if>
+      <if test="operator != null" >
+        Operator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="amounttype != null" >
+        #{amounttype,jdbcType=INTEGER},
+      </if>
+      <if test="inway != null" >
+        #{inway,jdbcType=VARCHAR},
+      </if>
+      <if test="outway != null" >
+        #{outway,jdbcType=VARCHAR},
+      </if>
+      <if test="validcode != null" >
+        #{validcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    update Auth_AccountLog
+    <set >
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="amounttype != null" >
+        AmountType = #{amounttype,jdbcType=INTEGER},
+      </if>
+      <if test="inway != null" >
+        InWay = #{inway,jdbcType=VARCHAR},
+      </if>
+      <if test="outway != null" >
+        OutWay = #{outway,jdbcType=VARCHAR},
+      </if>
+      <if test="validcode != null" >
+        ValidCode = #{validcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="accountid != null" >
+        AccountId = #{accountid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        Operator = #{operator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.account.AuthAccountLog" >
+    update Auth_AccountLog
+    set CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Amount = #{amount,jdbcType=DECIMAL},
+      AmountType = #{amounttype,jdbcType=INTEGER},
+      InWay = #{inway,jdbcType=VARCHAR},
+      OutWay = #{outway,jdbcType=VARCHAR},
+      ValidCode = #{validcode,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      AccountId = #{accountid,jdbcType=VARCHAR},
+      Operator = #{operator,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

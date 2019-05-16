@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>领取福包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >  
+        <link rel="stylesheet" type="text/css" href="../css/wechatStyle.css" />
+       	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+		<link rel="stylesheet" href="../css/lindaofubao.css">
+		<link rel="stylesheet" href="../css/public.css">
+		 <link rel="stylesheet" type="text/css" href="../css/stylesuccess.css" />
+   </head>
+	<body>
+		<div id="bless" class="body_"  >
+		     <div id="bless-t">
+		     	<ul>
+		     		<li class="li_">
+		     			<input type="number" placeholder="输入你的手机号" id="phone" name="phone" class="Phone"  style="border:0px;"/>
+		     		</li>
+		     		<li>
+		     			<input type="number" placeholder="输入验证码" id="code" class="smsCode"  style="border:0px;"/>
+		     			<button style="border:0px;" class=" sendTophone sendCode"  rel="0">获取验证码</button>
+		     		</li>
+		     		<li>
+		     			<a onclick="atOnce()" ><img src="../images/img/reciButton.png"></a>
+		     		</li>
+		     	</ul>
+			 </div>
+			 <div id="bless-f">
+			   <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.bkgc.bvapp"><img src="../images/img/downButton.png" /></a>
+			 </div>
+		</div>
+		
+		<div id="blesssuccess" hidden="true">
+		     <div id="blesssuccess-t">
+		     		<div class="money">
+		     		<p  class="description"  id="description" style="font-size: 100px;font-weight: bold;color: #Fcc707">￥<span id="money" style="color:#ec4d35 "></span></p>
+<!-- 		     		  <p id="description">￥<span id="money"></span></p> -->
+		     	   </div>
+		     	   <div class="info">
+<!-- 		     		  <p class="p1" id="title1" >恭喜你！</p> -->
+		     		  <p class="p2" id="title2" >获得由<span id="name" style="font-size:38px;font-weight:bold "></span>送出的福包</p>
+		     	   </div>
+			 </div>
+			 <div id="blesssuccess-f">
+			   <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.bkgc.bvapp"><img src="../images/img/button.png" /></a>
+			 </div>
+		</div>					
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/saomalinfubao.js"></script>
+	<script src="../js/code.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function () {
+    	$('body').css({'height':$(window).height()})
+    	});
+	</script>
+</html>

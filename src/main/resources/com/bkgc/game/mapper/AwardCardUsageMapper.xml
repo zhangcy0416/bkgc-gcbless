@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.AwardCardUsageMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.game.AwardCardUsage" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="award_no" property="awardNo" jdbcType="VARCHAR" />
+    <result column="award_amount" property="awardAmount" jdbcType="DECIMAL" />
+    <result column="multiple_amount" property="multipleAmount" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="reward_id" property="rewardId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, card_id, award_no, award_amount, multiple_amount, create_time, description, user_id, 
+    reward_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward_award_card_use_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from reward_award_card_use_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.game.AwardCardUsage" >
+    insert into reward_award_card_use_order (id, card_id, award_no, 
+      award_amount, multiple_amount, create_time, 
+      description, user_id, reward_id
+      )
+    values (#{id,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, #{awardNo,jdbcType=VARCHAR}, 
+      #{awardAmount,jdbcType=DECIMAL}, #{multipleAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{rewardId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.game.AwardCardUsage" >
+    insert into reward_award_card_use_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="awardNo != null" >
+        award_no,
+      </if>
+      <if test="awardAmount != null" >
+        award_amount,
+      </if>
+      <if test="multipleAmount != null" >
+        multiple_amount,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="rewardId != null" >
+        reward_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardNo != null" >
+        #{awardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="awardAmount != null" >
+        #{awardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="multipleAmount != null" >
+        #{multipleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardId != null" >
+        #{rewardId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.AwardCardUsage" >
+    update reward_award_card_use_order
+    <set >
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardNo != null" >
+        award_no = #{awardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="awardAmount != null" >
+        award_amount = #{awardAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="multipleAmount != null" >
+        multiple_amount = #{multipleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardId != null" >
+        reward_id = #{rewardId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.AwardCardUsage" >
+    update reward_award_card_use_order
+    set card_id = #{cardId,jdbcType=VARCHAR},
+      award_no = #{awardNo,jdbcType=VARCHAR},
+      award_amount = #{awardAmount,jdbcType=DECIMAL},
+      multiple_amount = #{multipleAmount,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      reward_id = #{rewardId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByOrderno" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from reward_award_card_use_order
+    where award_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+
+  <select id="queryAwardBlessByDate" resultType="java.lang.Integer">
+       select ifnull(sum(multiple_amount),0) awardAmount from reward_award_card_use_order where DATE_FORMAT(create_time,'%Y-%m-%d') = #{date,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.RewardPrincipalMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.game.RewardPrincipal" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="reward_id" property="rewardId" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="factor_index_min" property="factorIndexMin" jdbcType="DECIMAL" />
+    <result column="factor_index_max" property="factorIndexMax" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, reward_id, description, user_id, factor_index_min, factor_index_max
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward_principal
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from reward_principal
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.game.RewardPrincipal" >
+    insert into reward_principal (id, reward_id, description, 
+      user_id, factor_index_min, factor_index_max
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rewardId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{factorIndexMin,jdbcType=DECIMAL}, #{factorIndexMax,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.game.RewardPrincipal" >
+    insert into reward_principal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rewardId != null" >
+        reward_id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="factorIndexMin != null" >
+        factor_index_min,
+      </if>
+      <if test="factorIndexMax != null" >
+        factor_index_max,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardId != null" >
+        #{rewardId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="factorIndexMin != null" >
+        #{factorIndexMin,jdbcType=DECIMAL},
+      </if>
+      <if test="factorIndexMax != null" >
+        #{factorIndexMax,jdbcType=DECIMAL},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.RewardPrincipal" >
+    update reward_principal
+    <set >
+      <if test="rewardId != null" >
+        reward_id = #{rewardId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="factorIndexMin != null" >
+        factor_index_min = #{factorIndexMin,jdbcType=DECIMAL},
+      </if>
+      <if test="factorIndexMax != null" >
+        factor_index_max = #{factorIndexMax,jdbcType=DECIMAL},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=INTEGER}
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.RewardPrincipal" >
+    update reward_principal
+    set reward_id = #{rewardId,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      factor_index_min = #{factorIndexMin,jdbcType=DECIMAL},
+      factor_index_max = #{factorIndexMax,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByFactor" resultMap="BaseResultMap"   parameterType="java.math.BigDecimal">
+  	select 
+    <include refid="Base_Column_List" />
+    from reward_principal
+    where 1=1 
+    <if test="factor != null">
+    	 and factor_index_min  &lt;= #{factor,jdbcType=DECIMAL}
+    	 and factor_index_max &gt;= #{factor,jdbcType=DECIMAL}
+    </if>
+
+  </select>
+  
+   <select id="selectByGuid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward_principal
+    where user_id = #{guid,jdbcType=VARCHAR} AND available=1
+  </select> 
+  
+</mapper>

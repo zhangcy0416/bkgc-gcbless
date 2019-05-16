@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.AuthFriendMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.user.AuthFriend" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="MemberId" property="memberid" jdbcType="VARCHAR" />
+    <result column="FriendMemberId" property="friendmemberid" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, MemberId, FriendMemberId, CreateTime, Status
+  </sql>
+  
+  
+   <select id="selectFriend" resultMap="BaseResultMap" parameterType="com.bkgc.bean.user.AuthFriend" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Friend
+    where  (MemberId =#{memberid,jdbcType=VARCHAR}  and FriendMemberId=#{friendmemberid,jdbcType=VARCHAR}) or
+     (FriendMemberId =#{memberid,jdbcType=VARCHAR} and MemberId= #{friendmemberid,jdbcType=VARCHAR})
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Friend
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Auth_Friend
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.user.AuthFriend" >
+    insert into Auth_Friend (Id, MemberId, FriendMemberId, 
+      CreateTime, Status)
+    values (#{id,jdbcType=VARCHAR}, #{memberid,jdbcType=VARCHAR}, #{friendmemberid,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.user.AuthFriend" >
+    insert into Auth_Friend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="memberid != null" >
+        MemberId,
+      </if>
+      <if test="friendmemberid != null" >
+        FriendMemberId,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="friendmemberid != null" >
+        #{friendmemberid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.user.AuthFriend" >
+    update Auth_Friend
+    <set >
+      <if test="memberid != null" >
+        MemberId = #{memberid,jdbcType=VARCHAR},
+      </if>
+      <if test="friendmemberid != null" >
+        FriendMemberId = #{friendmemberid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.user.AuthFriend" >
+    update Auth_Friend
+    set MemberId = #{memberid,jdbcType=VARCHAR},
+      FriendMemberId = #{friendmemberid,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

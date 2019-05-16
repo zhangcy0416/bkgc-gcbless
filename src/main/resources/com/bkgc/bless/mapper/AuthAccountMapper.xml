@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.AuthAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.account.AuthAccount" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="UserType" property="usertype" jdbcType="INTEGER" />
+    <result column="UserId" property="userid" jdbcType="VARCHAR" />
+    <result column="AccountBalance" property="accountbalance" jdbcType="DECIMAL" />
+    <result column="BlessAmount" property="blessamount" jdbcType="DECIMAL" />
+    <result column="ValidCode" property="validcode" jdbcType="VARCHAR" />
+    <result column="LoveValue" property="lovevalue" jdbcType="INTEGER" />
+    <result column="PayPassword" property="paypassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, UserType, UserId, AccountBalance, BlessAmount, ValidCode, LoveValue, PayPassword
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Account
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Account
+    where 1=1
+    <if test="userId != null">
+    	and UserId = #{userId,jdbcType=VARCHAR}
+    	and UserType=1
+    </if> 
+  </select>
+   
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.bkgc.bean.account.AuthAccount" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Account
+    where 1=1
+    <if test="usertype != null" >
+        and UserType = #{usertype,jdbcType=INTEGER}
+      </if>
+      <if test="userid != null" >
+        and UserId = #{userid,jdbcType=VARCHAR}
+      </if>
+      <if test="accountbalance != null" >
+        and AccountBalance = #{accountbalance,jdbcType=DECIMAL}
+      </if>
+      <if test="blessamount != null" >
+        and BlessAmount = #{blessamount,jdbcType=DECIMAL}
+      </if>
+      <if test="validcode != null" >
+        and ValidCode = #{validcode,jdbcType=VARCHAR}
+      </if>
+      <if test="lovevalue != null" >
+        and LoveValue = #{lovevalue,jdbcType=INTEGER}
+      </if>
+      <if test="paypassword != null" >
+        and PayPassword = #{paypassword,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Auth_Account
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.account.AuthAccount" >
+    insert into Auth_Account (Id, UserType, UserId, 
+      AccountBalance, BlessAmount, ValidCode, 
+      LoveValue, PayPassword)
+    values (#{id,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, 
+      #{accountbalance,jdbcType=DECIMAL}, #{blessamount,jdbcType=DECIMAL}, #{validcode,jdbcType=VARCHAR}, 
+      #{lovevalue,jdbcType=INTEGER}, #{paypassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.account.AuthAccount" >
+    insert into Auth_Account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="usertype != null" >
+        UserType,
+      </if>
+      <if test="userid != null" >
+        UserId,
+      </if>
+      <if test="accountbalance != null" >
+        AccountBalance,
+      </if>
+      <if test="blessamount != null" >
+        BlessAmount,
+      </if>
+      <if test="validcode != null" >
+        ValidCode,
+      </if>
+      <if test="lovevalue != null" >
+        LoveValue,
+      </if>
+      <if test="paypassword != null" >
+        PayPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountbalance != null" >
+        #{accountbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="blessamount != null" >
+        #{blessamount,jdbcType=DECIMAL},
+      </if>
+      <if test="validcode != null" >
+        #{validcode,jdbcType=VARCHAR},
+      </if>
+      <if test="lovevalue != null" >
+        #{lovevalue,jdbcType=INTEGER},
+      </if>
+      <if test="paypassword != null" >
+        #{paypassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.account.AuthAccount" >
+    update Auth_Account
+    <set >
+      <if test="usertype != null" >
+        UserType = #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        UserId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountbalance != null" >
+        AccountBalance = #{accountbalance,jdbcType=DECIMAL},
+      </if>
+      <if test="blessamount != null" >
+        BlessAmount = #{blessamount,jdbcType=DECIMAL},
+      </if>
+      <if test="validcode != null" >
+        ValidCode = #{validcode,jdbcType=VARCHAR},
+      </if>
+      <if test="lovevalue != null" >
+        LoveValue = #{lovevalue,jdbcType=INTEGER},
+      </if>
+      <if test="paypassword != null" >
+        PayPassword = #{paypassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.account.AuthAccount" >
+    update Auth_Account
+    set UserType = #{usertype,jdbcType=INTEGER},
+      UserId = #{userid,jdbcType=VARCHAR},
+      AccountBalance = #{accountbalance,jdbcType=DECIMAL},
+      BlessAmount = #{blessamount,jdbcType=DECIMAL},
+      ValidCode = #{validcode,jdbcType=VARCHAR},
+      LoveValue = #{lovevalue,jdbcType=INTEGER},
+      PayPassword = #{paypassword,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

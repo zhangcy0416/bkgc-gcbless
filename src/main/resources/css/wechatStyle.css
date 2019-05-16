@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+/* div{margin:0 auto;height:100%;} */
+
+body{margin:0 0;padding:0 0;}
+div{margin:0 auto;height: 100%;width: 100%;}
+.body_{background:url(../images/img/wehcatBlessBack.png);background-repeat: no-repeat; background-size: 100% 100%;overflow-x:hidden;}
+#bless #bless-t{width: 100%;height: 60%;}
+#bless-t ul{width: 100%;height: 60%;float: left;margin-top:30%;margin-left: 1%;}
+#bless-t ul li{list-style: none;float: left;width: 90%;height: 20%;margin-top: 5%;margin-left: -5%;}
+#bless-t ul li input{padding-left:5%;vertical-align: middle;}
+#bless-t  #phone{width: 93%;height:40px;font-size: 12px;background: url(../images/img/phoneFrame.png);background-size: 100% 40px;background-repeat: no-repeat;}
+#bless-t  #code{float:left;width: 56%;height: 40px;font-size: 12px;background: url(../images/img/codeFrame.png);background-size: 100% 40px;background-repeat: no-repeat;}
+#bless-t button{float:left;width: 33%;height:40px;color:red;font-size: 12px;background:url(../images/img/getCode.png);background-size: 100% 40px;background-repeat: no-repeat;margin-left: 2%;}
+#bless-t img{width: 95%;}
+#bless #bless-f{width:60%;height: 40%;float: left;margin-left: 10%;}
+#bless-f img{margin-top: 80%;width: 80%;margin-left: 26%;}

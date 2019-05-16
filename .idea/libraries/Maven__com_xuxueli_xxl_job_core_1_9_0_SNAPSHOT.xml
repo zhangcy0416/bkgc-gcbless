@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.xuxueli:xxl-job-core:1.9.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xuxueli/xxl-job-core/1.9.0-SNAPSHOT/xxl-job-core-1.9.0-20171026.063221-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xuxueli/xxl-job-core/1.9.0-SNAPSHOT/xxl-job-core-1.9.0-20171026.063221-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xuxueli/xxl-job-core/1.9.0-SNAPSHOT/xxl-job-core-1.9.0-20171026.063221-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

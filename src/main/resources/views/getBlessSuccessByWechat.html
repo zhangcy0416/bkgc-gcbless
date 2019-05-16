@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	<title>成功领取福包</title>
+        <link rel="stylesheet" type="text/css" href="../css/stylesuccess.css" />
+   </head>
+	<body>
+		<div id="blesssuccess">
+		     <div id="blesssuccess-t">
+		     		<div class="money">
+		     		<p  class="description"  id="description" style="font-size: 100px;font-weight: bold;color: #Fcc707">￥<span id="money" style="color:#ec4d35 "></span></p>
+<!-- 		     		  <p id="description">￥<span id="money"></span></p> -->
+		     	   </div>
+		     	   <div class="info">
+<!-- 		     		  <p class="p1" id="title1" >恭喜你！</p> -->
+		     		  <p class="p2" id="title2" style="font-size:38px;font-weight:bold "><span id="name" ></span>的福包</p>
+		     	   </div>
+			 </div>
+			 <div id="blesssuccess-f">
+			   <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.bkgc.bvapp"><img src="../images/img/button.png" /></a>
+			 </div>
+		</div>	
+	</body>
+		<script src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+    var json = {};
+    var arr = location.search.substr(1).split('&');
+	    arr.forEach(function(item) {
+	        var tmp = item.split('=');
+	        json[tmp[0]] = tmp[1];
+	    });
+	    var amount = json.amount;
+		var name = json.name;
+		var description = json.description;
+		if(amount !="undefined" && name !="undefined"){
+		var delName = decodeURIComponent(name);
+		$("#money").text(amount);
+		$("#name").text(delName);
+		}else{
+			 var pText=document.getElementById("description");
+			 pText.style.fontSize='30px';
+			 pText.style.fontWeight="bold";
+			 pText.style.marginLeft="25%";
+		/* 	 pText.style.backgroundColor='green'; */
+			var des = decodeURIComponent(json.description);
+			$("#description").text(des);
+			var title2=document.getElementById("title2");
+			title2.hidden = true;
+		}
+	</script>
+	
+</html>

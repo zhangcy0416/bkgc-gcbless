@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.bkgc:bkgc-bean:0.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bkgc/bkgc-bean/0.0.2-SNAPSHOT/bkgc-bean-0.0.2-20190506.080157-96.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bkgc/bkgc-bean/0.0.2-SNAPSHOT/bkgc-bean-0.0.2-20190506.080157-96-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bkgc/bkgc-bean/0.0.2-SNAPSHOT/bkgc-bean-0.0.2-20190506.080157-96-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

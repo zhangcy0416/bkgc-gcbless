@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport"
+          content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <!-- 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏。 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 这个主要是根据实际的页面设计的主体色为搭配来进行设置。 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 忽略页面中的数字识别为电话号码,email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 禁止google翻译 -->
+    <meta name="google" content="notranslate"/>
+    <title>领取福包</title>
+    <link rel="stylesheet" href="css/getfubao_success.css">
+</head>
+
+<body>
+
+<body>
+<div id="getfubao_bg">
+    <div class="getfubao_describe">
+        <div class="getfubao_view">
+            <span class="getfubao_company_font" id="name">北控国彩</span>
+            <span class="getfubao_font" id="gubao_desc">送出的福包</span>
+        </div>
+        <div class="getfubao_amount">
+            <p id="getfubao_failed" hidden="true">同一个福包每天只能领取一次</p>
+            <img style="width: 1.6rem;height:1.65rem;position: absolute;left: 0;top: 0;"
+                 src="http://oss.8fubao.com/envelope/img/fubao.png"/>
+            <p class="amount_num" id="money" hidden="true">￥100</p>
+            <p class="fubao_ticket_text" id="lottery" hidden="true">可使用福包兑换彩票</p>
+            <div class="getfubao_bottom_view">
+                <p class="fubao_bottom" id="fubao_account" hidden="true">福包已放入你的账户</p>
+            </div>
+        </div>
+    </div>
+    <button class="exchange_ticket" id="exchange">兑换彩票</button>
+</div>
+<div class="bottom_view">
+    <img src="http://oss.8fubao.com/envelope/img/go.png" id="startGame" class="startGameBtn" hidden="true"/>
+    <img src="http://oss.8fubao.com/envelope/img/up.png" class="up" hidden="true"/>
+</div>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/flexible_css.js"></script>
+<script type="text/javascript" src="js/flexible.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="../js/BaseUrl.js"></script>
+<script type="text/javascript" src="js/getfubao.js"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var fubaoBgheight = $('#getfubao_bg').height();
+        $('.getfubao_describe').css('margin-top', fubaoBgheight * 0.38);
+    }
+</script>
+</body>
+</body>
+
+</html>

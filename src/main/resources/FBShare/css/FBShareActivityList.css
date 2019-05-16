@@ -1,0 +1,251 @@
+	.text-color-17 {
+				color: #171A17;
+			}
+			
+			.text-color-c7 {
+				color: #C7C7C7;
+			}
+			
+			.text-color-bf {
+				color: #BFBFBF;
+			}
+			
+			.text-color-33 {
+				color: #333333;
+			}
+			
+			.text-color-66 {
+				color: #666666;
+			}
+			
+			.text-color-red {
+				color: #FC4E4E;
+			}
+			
+			.text-color-white {
+				color: #FFFFFF;
+			}
+			
+			.text-size-10 {
+				font-size: 0.26rem;
+			}
+			
+			.text-size-12 {
+				font-size: 0.32rem;
+			}
+			
+			.text-size-15 {
+				font-size: 0.4rem;
+			}
+			
+			.text-size-16 {
+				font-size: 0.42rem;
+			}
+			
+			.font-bold {
+				font-weight: bold;
+			}
+			/*样式*/
+			.top {
+				height: 1.33rem;
+				margin-bottom: 0.5rem;
+				background-color: white;
+			}
+			
+			.header {
+				display: flex;
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			
+			.header div {
+				text-align: center;
+				align-items: center;
+				width: 3.33rem;
+				line-height: 1.33rem;
+				font-size: 0.4rem;
+				color: #171A17;
+				position: relative;
+			}
+			
+			.header .line {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 1px;
+				background-color: #F0F0F0;
+			}
+			
+			.cxhd .blueLine {
+				position: absolute;
+				bottom: 0.13rem;
+				left: 1.26rem;
+				width: 0.8rem;
+				height: 3px;
+				background-color: #3D80CC;
+			}
+			
+			.list {
+				padding: 0 0.1rem;
+			}
+			
+			.item {
+				width: 9.8rem;
+				height: 4.54rem;
+				border-radius: 0.13rem;
+				background-image: url(../../images/img/fb_item.png);
+				background-repeat: no-repeat;
+				background-size: 9.8rem 4.54rem;
+				margin-top: -0.45rem;
+				position: relative;
+			}
+			
+			.game {
+				width: 0.93rem;
+				height: 0.93rem;
+				position: absolute;
+				left: 0.8rem;
+				top: 0.4rem;
+			}
+			
+			.title {
+				position: absolute;
+				left: 2.26rem;
+				top: 0.6rem;
+				font-weight: bold;
+				font-size: 0.42rem;
+				line-height: 0.42rem;
+				color: #333333;
+			}
+			
+			.takeRndNum {
+				position: absolute;
+				left: 0.85rem;
+				bottom:0.5rem;
+			}
+			
+			.endRule {
+				position: absolute;
+				right: 0.85rem;
+				bottom:0.5rem;
+			}
+			
+			.line1 {
+				position: absolute;
+				right: 0.72rem;
+				left: 0.72rem;
+				height: 1px;
+				bottom:1.2rem;
+				background-color: #EDEDED;
+			}
+			
+			.line2 {
+				position: absolute;
+				right: 3.0rem;
+				top: 0.7rem;
+				width: 1px;
+				height: 2.26rem;
+				background-color: #EEEEEE;
+			}
+			
+			.begin {
+				position: absolute;
+				right: 0.8rem;
+				top: 1rem;
+				width: 1.8rem;
+				height: 0.72rem;
+				line-height: 0.72rem;
+				text-align: center;
+				background-color: #5BD6AA;
+				border-radius: 0.36rem;
+			}
+			
+			.time {
+				position: absolute;
+				right: 0.8rem;
+				top: 1.9rem;
+				width: 1.8rem;
+				height: 1rem;
+				line-height: 1rem;
+				text-align: center;
+			}
+			.time:after{
+				content: '开奖时间';
+				position: absolute;
+				right:0;
+				top: -0.4rem;
+				width: 1.8rem;
+				height: 0.72rem;
+				text-align: center;
+				
+			}
+			
+			.redNum {
+				position: absolute;
+				left: 0.8rem;
+				top: 1.9rem;
+				width: 1.8rem;
+				height: 1rem;
+				text-align: center;
+			}
+			
+			.redNum:after{
+				content: '红豆奖励';
+				position: absolute;
+				right:0;
+				bottom: -0.2rem;
+				width: 1.8rem;
+				height: 0.72rem;
+				text-align: center;
+				font-size: 0.32rem;
+				color: #BFBFBF;
+				
+			}
+			
+			.takeNum {
+				position: absolute;
+				left: 4.1rem;
+				top: 1.85rem;
+				width: 3.5rem;
+				height: 1rem;
+				text-align: left;
+				font-size: 0.5rem;
+			}
+			
+			.alert {
+				content: '已有';
+				position: absolute;
+				left:3.0rem;
+				top: 2.0rem;
+				width: 1rem;
+				height: 0.72rem;
+				font-size: 0.32rem;
+				color: #666666;
+				text-align: right;
+				
+			}
+			
+			.takeNum:before{
+				content: '人参与';
+				position: absolute;
+				left:-0.2rem;
+				bottom: -0.3rem;
+				width: 3.5rem;
+				height: 0.72rem;
+				font-size: 0.32rem;
+				color: #666666;
+				font-weight: normal;
+				
+			}
+			
+			.bagimg {
+				position: fixed;
+				bottom: 4rem;
+				right: 0.3rem;
+				width: 1.5rem;
+				height: 1.5rem;
+				z-index: 999;
+			}
+			

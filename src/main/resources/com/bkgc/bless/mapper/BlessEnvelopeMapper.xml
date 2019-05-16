@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.BlessEnvelopeMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.BlessEnvelope" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="DECIMAL" />
+    <result column="LotteryTicketTypeName" property="lotterytickettypename" jdbcType="VARCHAR" />
+    <result column="GoodsId" property="goodsid" jdbcType="VARCHAR" />
+    <result column="ReceiveExpiredTime" property="receiveexpiredtime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="FromUserId" property="fromuserid" jdbcType="VARCHAR" />
+    <result column="FromUserType" property="fromusertype" jdbcType="INTEGER" />
+    <result column="ReceiveMemberId" property="receivememberid" jdbcType="VARCHAR" />
+    <result column="ReceiveTime" property="receivetime" jdbcType="TIMESTAMP" />
+    <result column="ReceiveLocation" property="receivelocation" jdbcType="VARCHAR" />
+    <result column="IsOpened" property="isopened" jdbcType="INTEGER" />
+    <result column="OpenTime" property="opentime" jdbcType="TIMESTAMP" />
+    <result column="GroupId" property="groupid" jdbcType="VARCHAR" />
+    <result column="OriginalId" property="originalid" jdbcType="VARCHAR" />
+    <result column="LastId" property="lastid" jdbcType="VARCHAR" />
+    <result column="PostTime" property="posttime" jdbcType="TIMESTAMP" />
+    <result column="IsUsed" property="isused" jdbcType="INTEGER" />
+    <result column="IsTransfer" property="istransfer" jdbcType="INTEGER" />
+  </resultMap>
+  
+ 	<resultMap id="OrderDailyStatistics" type="com.bkgc.bean.order.OrderDailyStatistics">
+		<result column="create_time" property="dateStr" jdbcType="VARCHAR"/>	    
+	    <result column="total_price" property="totalMoney" jdbcType="DECIMAL"/>	   
+	    <result column="count" property="productNum" jdbcType="INTEGER"/>	   
+	</resultMap>
+	
+ 	<resultMap id="Statistics" type="com.bkgc.bean.order.OrderDailyStatistics">
+	    <result column="total_price" property="totalAmount" jdbcType="DECIMAL"/>	   
+	    <result column="count" property="productNum" jdbcType="INTEGER"/>	   
+	</resultMap>
+	
+	<resultMap type="com.bkgc.bean.bless.BlessReciver" id="BlessReciverResultMap">
+        <id property="nickName" column="nickName"/>
+        <id property="phone" column="phone"/>
+        <id property="awardAmount" column="amount"/>
+	</resultMap>
+  
+  <resultMap id="ReceivedBaseResultMap" type="com.bkgc.bean.bless.ReceivedBlessEnvelope" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="DECIMAL" />
+    <result column="LotteryTicketTypeName" property="lotterytickettypename" jdbcType="VARCHAR" />
+    <result column="GoodsId" property="goodsid" jdbcType="VARCHAR" />
+    <result column="ReceiveExpiredTime" property="receiveexpiredtime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="FromUserId" property="fromuserid" jdbcType="VARCHAR" />
+    <result column="FromUserType" property="fromusertype" jdbcType="INTEGER" />
+    <result column="ReceiveMemberId" property="receivememberid" jdbcType="VARCHAR" />
+    <result column="ReceiveTime" property="receivetime" jdbcType="TIMESTAMP" />
+    <result column="ReceiveLocation" property="receivelocation" jdbcType="VARCHAR" />
+    <result column="IsOpened" property="isopened" jdbcType="INTEGER" />
+    <result column="OpenTime" property="opentime" jdbcType="TIMESTAMP" />
+    <result column="GroupId" property="groupid" jdbcType="VARCHAR" />
+    <result column="OriginalId" property="originalid" jdbcType="VARCHAR" />
+    <result column="LastId" property="lastid" jdbcType="VARCHAR" />
+    <result column="PostTime" property="posttime" jdbcType="TIMESTAMP" />
+    <result column="IsUsed" property="isused" jdbcType="INTEGER" />
+    <result column="IsTransfer" property="istransfer" jdbcType="INTEGER" />
+    <result column="FromUserPhoto" property="fromuserphoto" jdbcType="VARCHAR" />
+    <result column="Name" property="fromName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	<resultMap id="ReceiveBlessInfo" type="com.bkgc.bean.bless.ReceiveBlessInfo">
+		<result column="name" property="name" jdbcType="VARCHAR"/>	    
+	    <result column="phone" property="phone" jdbcType="VARCHAR"/>	
+	    <result column="amount" property="amount" jdbcType="DECIMAL"/>	
+	    <result column="createTime" property="createtime" jdbcType="TIMESTAMP"/>	
+	</resultMap>
+  
+  <sql id="Base_Column_List" >
+    Id, CreateTime, Type, Amount, LotteryTicketTypeName, GoodsId, ReceiveExpiredTime, 
+    Remark, FromUserId, FromUserType, ReceiveMemberId, ReceiveTime, ReceiveLocation, 
+    IsOpened, OpenTime, GroupId, OriginalId, LastId, PostTime, IsUsed, IsTransfer
+  </sql>
+  
+  <sql id="Received_Column_List" >
+    Id, CreateTime, Type, Amount, LotteryTicketTypeName, GoodsId, ReceiveExpiredTime, 
+    Remark, FromUserId, FromUserType, ReceiveMemberId, ReceiveTime, ReceiveLocation, 
+    IsOpened, OpenTime, GroupId, OriginalId, LastId, PostTime, IsUsed, IsTransfer,FromUserPhoto,Name
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="getReceiviableByGroupId" resultMap="ReceivedBaseResultMap" parameterType="java.lang.String" >
+    select a.Id Id,a.FromUserId FromUserId,a.FromUserType FromUserType,b.Photo as FromUserPhoto, b.Name as Name 
+    from BE_BlessEnvelope a,view_allcus b where a.FromUserId=b.Id and (a.ReceiveMemberId is null or a.ReceiveMemberId='') and a.GroupId=#{groupid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getReceivedBes" resultMap="ReceivedBaseResultMap" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+       SELECT BE_BlessEnvelope.Id,Type,Amount,Remark,ReceiveTime,IsOpened,Auth_Member.NickName as Name
+       FROM BE_BlessEnvelope left join Auth_Member on BE_BlessEnvelope.ReceiveMemberId=Auth_Member.Id
+       WHERE ReceiveMemberId =#{receivememberid,jdbcType=VARCHAR} and IsOpened=#{isopened,jdbcType=INTEGER} 
+       order by IsOpened asc,ReceiveTime desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getUnreceivedCountByGroupId" resultType="java.lang.Integer" parameterType="java.lang.String" >
+      SELECT count(Id) from BE_BlessEnvelope t where t.ReceiveMemberId is null and t.GroupId= #{groupid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getUnreceivedByGroupId" resultMap="ReceivedBaseResultMap" parameterType="java.lang.String" >
+      select a.Id,FromUserId,FromUserType,b.Photo as FromUserPhoto, a.Type, a.Remark, a.Amount, a.IsOpened 
+      from BE_BlessEnvelope a,view_allcus b 
+      where a.FromUserId=b.Id and IsOpened=0 and (a.ReceiveMemberId is null or a.ReceiveMemberId='') and a.GroupId=#{groupid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getReceiviableByBeId" resultMap="ReceivedBaseResultMap" parameterType="java.lang.String" >
+    select a.Id Id, a.ReceiveMemberId ReceiveMemberId,a.FromUserType FromUserType,b.Photo as FromUserPhoto 
+    from BE_BlessEnvelope a,view_allcus b where a.FromUserId=b.Id and a.Id=#{beId,jdbcType=VARCHAR}
+  </select>
+ 
+ 
+ 
+   <select id="queryByBlessEnvlope" resultMap="ReceivedBaseResultMap" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope
+    where 1=1
+     <if test="createtime != null" >
+      	  and CreateTime &gt; #{createtime,jdbcType=TIMESTAMP}
+      </if>
+     <if test="endTime != null" >
+      	  and CreateTime &lt; #{endTime,jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="type != null" >
+        and Type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="lotterytickettypename != null" >
+        and LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR}
+      </if>
+      <if test="goodsid != null" >
+        and GoodsId = #{goodsid,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveexpiredtime != null" >
+        and ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="fromuserid != null" >
+       and  FromUserId = #{fromuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="fromusertype != null" >
+       and FromUserType = #{fromusertype,jdbcType=INTEGER}
+      </if>
+      <if test="receivememberid != null" >
+       and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR}
+      </if>
+      <if test="receivetime != null" >
+        and ReceiveTime = #{receivetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receivelocation != null" >
+        and ReceiveLocation = #{receivelocation,jdbcType=VARCHAR}
+      </if>
+      <if test="isopened != null" >
+       and  IsOpened = #{isopened,jdbcType=INTEGER}
+      </if>
+      <if test="groupid != null" >
+       and  GroupId = #{groupid,jdbcType=VARCHAR}
+      </if>
+     <if test="idList!=null">
+       and GroupId in
+        <foreach item="item" collection="idList" open="(" separator="," close=")">
+            #{item}  
+         </foreach>
+   	</if>
+      <if test="originalid != null" >
+        and OriginalId = #{originalid,jdbcType=VARCHAR}
+      </if>
+      <if test="lastid != null" >
+        and LastId = #{lastid,jdbcType=VARCHAR}
+      </if>
+      <if test="posttime != null" >
+       and  PostTime = #{posttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isused != null" >
+        and IsUsed = #{isused,jdbcType=INTEGER}
+      </if>
+      <if test="istransfer != null" >
+        and IsTransfer = #{istransfer,jdbcType=INTEGER}
+      </if>
+       order by CreateTime desc 
+  </select>
+ 
+
+  
+  <select id="queryByCondition" resultMap="ReceivedBaseResultMap" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope
+    where 1=1
+     <if test="createtime != null" >
+      	and  CreateTime = #{createtime,jdbcType=TIMESTAMP} 
+      </if>
+      <if test="type != null" >
+        and Type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="lotterytickettypename != null" >
+        and LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR}
+      </if>
+      <if test="goodsid != null" >
+        and GoodsId = #{goodsid,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveexpiredtime != null" >
+        and ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="fromuserid != null" >
+       and  FromUserId = #{fromuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="fromusertype != null" >
+       and FromUserType = #{fromusertype,jdbcType=INTEGER}
+      </if>
+      <if test="receivememberid != null" >
+       and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR}
+      </if>
+      <if test="receivetime != null" >
+        and ReceiveTime = #{receivetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receivelocation != null" >
+        and ReceiveLocation = #{receivelocation,jdbcType=VARCHAR}
+      </if>
+      <if test="isopened != null" >
+       and  IsOpened = #{isopened,jdbcType=INTEGER}
+      </if>
+      <if test="groupid != null" >
+       and  GroupId = #{groupid,jdbcType=VARCHAR}
+      </if>
+      <if test="originalid != null" >
+        and OriginalId = #{originalid,jdbcType=VARCHAR}
+      </if>
+      <if test="lastid != null" >
+        and LastId = #{lastid,jdbcType=VARCHAR}
+      </if>
+      <if test="posttime != null" >
+       and  PostTime = #{posttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isused != null" >
+        and IsUsed = #{isused,jdbcType=INTEGER}
+      </if>
+      <if test="istransfer != null" >
+        and IsTransfer = #{istransfer,jdbcType=INTEGER}
+      </if>
+       order by CreateTime desc limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+  <select id="countReceivedThisday" resultType="java.lang.Integer" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+    count(1)
+    from BE_BlessEnvelope
+    where 1=1
+     <if test="createtime != null" >
+      	and  CreateTime = #{createtime,jdbcType=TIMESTAMP} 
+      </if>
+      <if test="type != null" >
+        and Type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="lotterytickettypename != null" >
+        and LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR}
+      </if>
+      <if test="goodsid != null" >
+        and GoodsId = #{goodsid,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveexpiredtime != null" >
+        and ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="fromuserid != null" >
+       and  FromUserId = #{fromuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="fromusertype != null" >
+       and FromUserType = #{fromusertype,jdbcType=INTEGER}
+      </if>
+      <if test="receivememberid != null" >
+       and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR}
+      </if>
+      <if test="receivetime != null" >
+        and ReceiveTime = #{receivetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receivelocation != null" >
+        and ReceiveLocation = #{receivelocation,jdbcType=VARCHAR}
+      </if>
+      <if test="isopened != null" >
+       and  IsOpened = #{isopened,jdbcType=INTEGER}
+      </if>
+      <if test="groupid != null" >
+       and  GroupId = #{groupid,jdbcType=VARCHAR}
+      </if>
+      <if test="originalid != null" >
+        and OriginalId = #{originalid,jdbcType=VARCHAR}
+      </if>
+      <if test="lastid != null" >
+        and LastId = #{lastid,jdbcType=VARCHAR}
+      </if>
+      <if test="posttime != null" >
+       and  PostTime = #{posttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isused != null" >
+        and IsUsed = #{isused,jdbcType=INTEGER}
+      </if>
+      <if test="istransfer != null" >
+        and IsTransfer = #{istransfer,jdbcType=INTEGER}
+      </if>
+      and DATE_FORMAT(OpenTime,'%Y%m%d')=#{thisday,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getByGroupId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope
+    where GroupId = #{groupid,jdbcType=VARCHAR} 
+  </select>
+  
+  <select id="getReceivedNumByGroupId" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from BE_BlessEnvelope
+    where GroupId = #{groupid,jdbcType=VARCHAR} ReceiveMemberId is not null
+  </select>
+  
+  <select id="getCountByGroupId" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    count(1)
+    from BE_BlessEnvelope
+    where GroupId = #{groupid,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="getEnvlopeThisDay" resultMap="BaseResultMap" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope
+    where GroupId = #{groupid,jdbcType=VARCHAR} and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR} and DATE_FORMAT(OpenTime,'%Y%m%d')=#{thisday,jdbcType=VARCHAR} 
+  </select>
+  
+  
+    <select id="checkReceivedNumThisDay" resultType="java.lang.Integer" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+    count(1)
+    from BE_BlessEnvelope
+    where GroupId = #{groupid,jdbcType=VARCHAR} and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR} and DATE_FORMAT(OpenTime,'%Y%m%d')=#{thisday,jdbcType=VARCHAR} 
+  </select>
+  
+  
+  
+   <select id="countBlessEnvelope" resultType="java.lang.Integer" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select count(1)
+    from BE_BlessEnvelope
+    where 1=1 
+    <if test="createtime != null" >
+      	and  CreateTime = #{createtime,jdbcType=TIMESTAMP} 
+      </if>
+      <if test="type != null" >
+        and Type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="amount != null" >
+        and Amount = #{amount,jdbcType=DECIMAL}
+      </if>
+      <if test="lotterytickettypename != null" >
+        and LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR}
+      </if>
+      <if test="goodsid != null" >
+        and GoodsId = #{goodsid,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveexpiredtime != null" >
+        and ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null" >
+        and Remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="fromuserid != null" >
+       and  FromUserId = #{fromuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="fromusertype != null" >
+       and FromUserType = #{fromusertype,jdbcType=INTEGER}
+      </if>
+      <if test="receivememberid != null" >
+       and ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR}
+      </if>
+      <if test="receivetime != null" >
+        and ReceiveTime = #{receivetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receivelocation != null" >
+        and ReceiveLocation = #{receivelocation,jdbcType=VARCHAR}
+      </if>
+      <if test="isopened != null" >
+       and  IsOpened = #{isopened,jdbcType=INTEGER}
+      </if>
+      <if test="opentime != null" >
+       and  OpenTime = #{opentime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="groupid != null" >
+       and  GroupId = #{groupid,jdbcType=VARCHAR}
+      </if>
+      <if test="originalid != null" >
+        and OriginalId = #{originalid,jdbcType=VARCHAR}
+      </if>
+      <if test="lastid != null" >
+        and LastId = #{lastid,jdbcType=VARCHAR}
+      </if>
+      <if test="posttime != null" >
+       and  PostTime = #{posttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isused != null" >
+        and IsUsed = #{isused,jdbcType=INTEGER}
+      </if>
+      <if test="istransfer != null" >
+        and IsTransfer = #{istransfer,jdbcType=INTEGER}
+      </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BE_BlessEnvelope
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    insert into BE_BlessEnvelope (Id, CreateTime, Type, 
+      Amount, LotteryTicketTypeName, GoodsId, 
+      ReceiveExpiredTime, Remark, FromUserId, 
+      FromUserType, ReceiveMemberId, ReceiveTime, 
+      ReceiveLocation, IsOpened, OpenTime, 
+      GroupId, OriginalId, LastId, 
+      PostTime, IsUsed, IsTransfer
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, 
+      #{amount,jdbcType=DECIMAL}, #{lotterytickettypename,jdbcType=VARCHAR}, #{goodsid,jdbcType=VARCHAR}, 
+      #{receiveexpiredtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{fromuserid,jdbcType=VARCHAR}, 
+      #{fromusertype,jdbcType=INTEGER}, #{receivememberid,jdbcType=VARCHAR}, #{receivetime,jdbcType=TIMESTAMP}, 
+      #{receivelocation,jdbcType=VARCHAR}, #{isopened,jdbcType=INTEGER}, #{opentime,jdbcType=TIMESTAMP}, 
+      #{groupid,jdbcType=VARCHAR}, #{originalid,jdbcType=VARCHAR}, #{lastid,jdbcType=VARCHAR}, 
+      #{posttime,jdbcType=TIMESTAMP}, #{isused,jdbcType=INTEGER}, #{istransfer,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    insert into BE_BlessEnvelope
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="lotterytickettypename != null" >
+        LotteryTicketTypeName,
+      </if>
+      <if test="goodsid != null" >
+        GoodsId,
+      </if>
+      <if test="receiveexpiredtime != null" >
+        ReceiveExpiredTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="fromuserid != null" >
+        FromUserId,
+      </if>
+      <if test="fromusertype != null" >
+        FromUserType,
+      </if>
+      <if test="receivememberid != null" >
+        ReceiveMemberId,
+      </if>
+      <if test="receivetime != null" >
+        ReceiveTime,
+      </if>
+      <if test="receivelocation != null" >
+        ReceiveLocation,
+      </if>
+      <if test="isopened != null" >
+        IsOpened,
+      </if>
+      <if test="opentime != null" >
+        OpenTime,
+      </if>
+      <if test="groupid != null" >
+        GroupId,
+      </if>
+      <if test="originalid != null" >
+        OriginalId,
+      </if>
+      <if test="lastid != null" >
+        LastId,
+      </if>
+      <if test="posttime != null" >
+        PostTime,
+      </if>
+      <if test="isused != null" >
+        IsUsed,
+      </if>
+      <if test="istransfer != null" >
+        IsTransfer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="lotterytickettypename != null" >
+        #{lotterytickettypename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveexpiredtime != null" >
+        #{receiveexpiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fromuserid != null" >
+        #{fromuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromusertype != null" >
+        #{fromusertype,jdbcType=INTEGER},
+      </if>
+      <if test="receivememberid != null" >
+        #{receivememberid,jdbcType=VARCHAR},
+      </if>
+      <if test="receivetime != null" >
+        #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivelocation != null" >
+        #{receivelocation,jdbcType=VARCHAR},
+      </if>
+      <if test="isopened != null" >
+        #{isopened,jdbcType=INTEGER},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalid != null" >
+        #{originalid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastid != null" >
+        #{lastid,jdbcType=VARCHAR},
+      </if>
+      <if test="posttime != null" >
+        #{posttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isused != null" >
+        #{isused,jdbcType=INTEGER},
+      </if>
+      <if test="istransfer != null" >
+        #{istransfer,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    update BE_BlessEnvelope
+    <set >
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        Type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="lotterytickettypename != null" >
+        LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsid != null" >
+        GoodsId = #{goodsid,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveexpiredtime != null" >
+        ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fromuserid != null" >
+        FromUserId = #{fromuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromusertype != null" >
+        FromUserType = #{fromusertype,jdbcType=INTEGER},
+      </if>
+      <if test="receivememberid != null" >
+        ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR},
+      </if>
+      <if test="receivetime != null" >
+        ReceiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivelocation != null" >
+        ReceiveLocation = #{receivelocation,jdbcType=VARCHAR},
+      </if>
+      <if test="isopened != null" >
+        IsOpened = #{isopened,jdbcType=INTEGER},
+      </if>
+      <if test="opentime != null" >
+        OpenTime = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupid != null" >
+        GroupId = #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="originalid != null" >
+        OriginalId = #{originalid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastid != null" >
+        LastId = #{lastid,jdbcType=VARCHAR},
+      </if>
+      <if test="posttime != null" >
+        PostTime = #{posttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isused != null" >
+        IsUsed = #{isused,jdbcType=INTEGER},
+      </if>
+      <if test="istransfer != null" >
+        IsTransfer = #{istransfer,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    update BE_BlessEnvelope
+    set CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Type = #{type,jdbcType=INTEGER},
+      Amount = #{amount,jdbcType=DECIMAL},
+      LotteryTicketTypeName = #{lotterytickettypename,jdbcType=VARCHAR},
+      GoodsId = #{goodsid,jdbcType=VARCHAR},
+      ReceiveExpiredTime = #{receiveexpiredtime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=VARCHAR},
+      FromUserId = #{fromuserid,jdbcType=VARCHAR},
+      FromUserType = #{fromusertype,jdbcType=INTEGER},
+      ReceiveMemberId = #{receivememberid,jdbcType=VARCHAR},
+      ReceiveTime = #{receivetime,jdbcType=TIMESTAMP},
+      ReceiveLocation = #{receivelocation,jdbcType=VARCHAR},
+      IsOpened = #{isopened,jdbcType=INTEGER},
+      OpenTime = #{opentime,jdbcType=TIMESTAMP},
+      GroupId = #{groupid,jdbcType=VARCHAR},
+      OriginalId = #{originalid,jdbcType=VARCHAR},
+      LastId = #{lastid,jdbcType=VARCHAR},
+      PostTime = #{posttime,jdbcType=TIMESTAMP},
+      IsUsed = #{isused,jdbcType=INTEGER},
+      IsTransfer = #{istransfer,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+	<select id="getDailyStatisticsByMachines" resultMap="OrderDailyStatistics"  parameterType="com.bkgc.bean.order.OrderSerachParam">
+		select
+			date_format(BE_BlessEnvelope.CreateTime,'%Y%m%d') create_time,sum(Amount) total_price, count(1) count
+		from
+			BE_BlessEnvelope
+		where 1=1 
+
+		  <if test="startDate!=null"> 
+		     	and  <![CDATA[BE_BlessEnvelope.CreateTime>=#{startDate,jdbcType=TIMESTAMP} ]]>
+	      </if>
+	      <if test="endDate!=null"> 
+		        and <![CDATA[BE_BlessEnvelope.CreateTime<=#{endDate,jdbcType=TIMESTAMP} ]]>
+	      </if>
+	      <!-- <if test="groupIds!=null"> -->
+	       and BE_BlessEnvelope.GroupId in(select blessenvelope_r_machine.blessEnvelopeGroup_id from blessenvelope_r_machine where machine_id= #{machineId,jdbcType=INTEGER})
+	     <!--    <foreach item="item" collection="groupIds" open="(" separator="," close=")">
+	            #{item}  
+	         </foreach> -->
+    	 <!--  </if> -->
+		group by date_format(BE_BlessEnvelope.CreateTime,'%Y%m%d') order by date_format(BE_BlessEnvelope.CreateTime,'%Y%m%d') DESC
+	</select>  
+
+  	<select id="blessReciverTop" resultMap="BlessReciverResultMap" parameterType="java.lang.Integer">
+  	    SELECT Auth_Member.NickName nickName,Auth_Member.Phone phone, BE_BlessEnvelope.Amount amount
+  	    FROM BE_BlessEnvelope JOIN Auth_Member 
+  	    WHERE BE_BlessEnvelope.ReceiveMemberId = Auth_Member.Id AND BE_BlessEnvelope.IsOpened='1'
+		ORDER BY BE_BlessEnvelope.Amount DESC LIMIT #{number,jdbcType=INTEGER}
+	</select>
+	
+	<select id="queryByGroupIds" resultMap="Statistics" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+		SUM(Amount) total_price, count(1) count
+    from BE_BlessEnvelope
+    where 1=1
+
+     <if test="idList!=null">
+       and GroupId in
+        <foreach item="item" collection="idList" open="(" separator="," close=")">
+            #{item}  
+         </foreach>
+   	</if>
+  </select>
+
+     <select id="getBlessInfoByGroupId" resultMap="ReceiveBlessInfo" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+       b1.Amount amount,a1.NickName name,a1.Phone phone,b1.CreateTime createTime
+    from be_blessenvelope b1 LEFT JOIN auth_member  a1 ON b1.ReceiveMemberId=a1.Id
+    where GroupId = #{groupid,jdbcType=VARCHAR} and ReceiveMemberId is not null
+    <if test="name != null">
+     and a1.NickName= #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="phone != null">
+    	and a1.Phone= #{phone,jdbcType=VARCHAR}
+    </if>
+	<if test="createtime !=null"> 
+     	    and b1.CreateTime &gt; #{createtime,jdbcType=TIMESTAMP}
+      </if>   
+	<if test="endTime !=null"> 
+     	     and b1.CreateTime &lt; #{endTime,jdbcType=TIMESTAMP}
+      </if>   
+      order by b1.Amount DESC
+      limit #{pageStart,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  
+ <select id="getBlessCountByGroupId" resultType="java.lang.Integer" parameterType="com.bkgc.bean.bless.BlessEnvelope" >
+    select 
+       count(1) 
+       from be_blessenvelope b1 LEFT JOIN auth_member  a1 ON b1.ReceiveMemberId=a1.Id
+    where GroupId = #{groupid,jdbcType=VARCHAR} and ReceiveMemberId is not null
+    <if test="name != null">
+     and a1.NickName= #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="phone != null">
+    	and a1.Phone= #{phone,jdbcType=VARCHAR}
+    </if>
+	<if test="createtime !=null"> 
+     	     and b1.CreateTime &gt; #{createtime,jdbcType=TIMESTAMP}
+      </if>   
+	<if test="endTime !=null"> 
+     	     and b1.CreateTime &lt; #{endTime,jdbcType=TIMESTAMP}
+      </if>   
+  </select>
+	
+	
+	
+</mapper>

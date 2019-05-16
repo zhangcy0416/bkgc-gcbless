@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.BlessEnvelopeVaildMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.BlessEnvelopeVaild" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="StartTime" property="startTime" jdbcType="VARCHAR" />
+    <result column="EndTime" property="endTime" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="INTEGER" />
+    <result column="GroupId" property="groupid" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+	Id ,EndTime,StartTime,GroupId,Type
+  </sql>
+
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope_Vaild
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+ 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BE_BlessEnvelope_Vaild
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+   <insert id="insert" parameterType="com.bkgc.bean.bless.BlessEnvelopeVaild" >
+    insert into BE_BlessEnvelope_Vaild (Id, StartTime, EndTime, 
+      GroupId, Type)
+    values (#{id,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR},
+      #{groupid,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
+      )
+  </insert>
+ 
+   <insert id="insertSelective" parameterType="com.bkgc.bean.bless.BlessEnvelopeVaild" >
+    insert into BE_BlessEnvelope_Vaild
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="startTime != null" >
+        StartTime,
+      </if>
+      <if test="endTime != null" >
+        EndTime,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="groupid != null" >
+        GroupId,
+      </if>
+     
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    
+      <if test="groupid != null" >
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+   <select id="getByGroupId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelope_Vaild
+    where GroupId = #{groupid,jdbcType=VARCHAR} order by StartTime asc
+  </select>
+ 
+    <select id="getTimeByGroupId" resultType="java.lang.String" parameterType="java.lang.String" >
+    select 
+    CONCAT(StartTime,"_",EndTime)
+    from BE_BlessEnvelope_Vaild
+    where GroupId = #{groupid,jdbcType=VARCHAR} 
+  </select>
+
+
+
+  <insert id="insertBlessEnvelopeVaildList" parameterType="java.util.List" >
+    insert into BE_BlessEnvelope_Vaild(Id,StartTime,EndTime,Type,GroupId)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id},#{item.startTime},#{item.endTime},#{item.type},#{item.groupid})
+    </foreach>
+  </insert>
+
+
+</mapper>

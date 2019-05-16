@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.RewardStepMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.RewardStep" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="step" property="step" jdbcType="INTEGER" />
+    <result column="two_bless" property="twoBless" jdbcType="INTEGER" />
+    <result column="five_bless" property="fiveBless" jdbcType="INTEGER" />
+    <result column="ten_bless" property="tenBless" jdbcType="INTEGER" />
+    <result column="ninety_discount" property="ninetyDiscount" jdbcType="INTEGER" />
+    <result column="eighty_discount" property="eightyDiscount" jdbcType="INTEGER" />
+    <result column="double_award" property="doubleAward" jdbcType="INTEGER" />
+    <result column="three_award" property="threeAward" jdbcType="INTEGER" />
+    <result column="luxury" property="luxury" jdbcType="INTEGER" />
+    <result column="portable_source" property="portableSource" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+    SELECT * FROM reward_step ORDER BY step asc
+  </select>
+
+</mapper>

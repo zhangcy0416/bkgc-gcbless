@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.ApkVersionMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.machine.ApkVersion" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="package_name" property="packageName" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="is_upgrade" property="isUpgrade" jdbcType="INTEGER" />
+
+    <result column="online" property="online" jdbcType="INTEGER" />
+    <result column="show" property="show" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, version, name, channel,description, update_time, create_time, package_name, is_delete, 
+    url,is_upgrade,online,`show`
+  </sql>
+  <select id="selectByChannel" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ApkVersion
+    where  1=1 and channel=#{channel,jdbcType=VARCHAR} ORDER BY version desc LIMIT 1 ;
+  </select>
+
+  <select id="selectNewVersionByChannel" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ApkVersion
+    where  online=1 and channel=#{channel,jdbcType=VARCHAR} ORDER BY version desc LIMIT 1 ;
+  </select>
+ 
+   <select id="selectMaxVersion4Ios" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ApkVersion
+    where  1=1 and channel='ios' ORDER BY version desc LIMIT 1 ;
+  </select>
+
+  <select id="selectMaxVersion4IosShow" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from ApkVersion
+    where  version=#{maxVersion,jdbcType=VARCHAR} and channel='ios'  ;
+  </select>
+
+</mapper>

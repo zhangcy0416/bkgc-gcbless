@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.AuthCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.user.AuthCompany" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Fax" property="fax" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Address" property="address" jdbcType="VARCHAR" />
+    <result column="PostCode" property="postcode" jdbcType="VARCHAR" />
+    <result column="ContactPerson" property="contactperson" jdbcType="VARCHAR" />
+    <result column="ContactPersonPhone" property="contactpersonphone" jdbcType="VARCHAR" />
+    <result column="LoginId" property="loginid" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="LogoPath" property="logopath" jdbcType="VARCHAR" />
+    <result column="CampaignImageURL" property="campaignimageurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Name, Phone, Fax, Email, Address, PostCode, ContactPerson, ContactPersonPhone, 
+    LoginId, CreateTime, LogoPath, CampaignImageURL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Auth_Company
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="getComPageAll" resultMap="BaseResultMap" parameterType="com.bkgc.bean.SearchBean">
+    select
+    Name,Phone,Address,ContactPerson,ContactPersonPhone,DATE_FORMAT(CreateTime,'%Y-%m-%d %H:%i:%S') createtimeStr
+    from Auth_Company where 1=1
+    <if test="name!=null">
+      and Name like CONCAT('%',#{name},'%')
+    </if>
+    <if test="phone!=null">
+      and Phone like CONCAT('%',#{phone},'%')
+    </if>
+    <if test="startDateTime!=null">
+      and CreateTime &gt;#{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null">
+      and CreateTime &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+    order by CreateTime desc limit #{pageNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getComAllCount"  resultType="java.lang.Integer" parameterType="com.bkgc.bean.SearchBean">
+    SELECT count(Id)
+    FROM Auth_Company
+    WHERE 1 = 1
+    <if test="name!=null">
+      and Name like CONCAT('%',#{name},'%')
+    </if>
+    <if test="phone!=null">
+      and Phone like CONCAT('%',#{phone},'%')
+    </if>
+    <if test="startDateTime!=null">
+      and CreateTime &gt;#{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null">
+      and CreateTime &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+  <select id="getSearched"  resultMap="BaseResultMap" parameterType="com.bkgc.bean.SearchBean">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM Auth_Company
+    WHERE 1 = 1
+    <if test="name!=null">
+      and Name like CONCAT('%',#{name},'%')
+    </if>
+    <if test="phone!=null">
+      and Phone like CONCAT('%',#{phone},'%')
+    </if>
+    <if test="startDateTime!=null">
+      and CreateTime &gt;#{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null">
+      and CreateTime &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+    order by CreateTime desc
+    <if test="pageNum!=null and pageSize!=null">
+      limit #{pageNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Auth_Company
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bkgc.bean.user.AuthCompany" >
+    insert into Auth_Company (Id, Name, Phone, 
+      Fax, Email, Address, 
+      PostCode, ContactPerson, ContactPersonPhone, 
+      LoginId, CreateTime, LogoPath, 
+      CampaignImageURL)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{postcode,jdbcType=VARCHAR}, #{contactperson,jdbcType=VARCHAR}, #{contactpersonphone,jdbcType=VARCHAR}, 
+      #{loginid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{logopath,jdbcType=VARCHAR}, 
+      #{campaignimageurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bkgc.bean.user.AuthCompany" >
+    insert into Auth_Company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="fax != null" >
+        Fax,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="postcode != null" >
+        PostCode,
+      </if>
+      <if test="contactperson != null" >
+        ContactPerson,
+      </if>
+      <if test="contactpersonphone != null" >
+        ContactPersonPhone,
+      </if>
+      <if test="loginid != null" >
+        LoginId,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="logopath != null" >
+        LogoPath,
+      </if>
+      <if test="campaignimageurl != null" >
+        CampaignImageURL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactperson != null" >
+        #{contactperson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpersonphone != null" >
+        #{contactpersonphone,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null" >
+        #{loginid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logopath != null" >
+        #{logopath,jdbcType=VARCHAR},
+      </if>
+      <if test="campaignimageurl != null" >
+        #{campaignimageurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.user.AuthCompany" >
+    update Auth_Company
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        Fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        PostCode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactperson != null" >
+        ContactPerson = #{contactperson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactpersonphone != null" >
+        ContactPersonPhone = #{contactpersonphone,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null" >
+        LoginId = #{loginid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logopath != null" >
+        LogoPath = #{logopath,jdbcType=VARCHAR},
+      </if>
+      <if test="campaignimageurl != null" >
+        CampaignImageURL = #{campaignimageurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.user.AuthCompany" >
+    update Auth_Company
+    set Name = #{name,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Fax = #{fax,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      PostCode = #{postcode,jdbcType=VARCHAR},
+      ContactPerson = #{contactperson,jdbcType=VARCHAR},
+      ContactPersonPhone = #{contactpersonphone,jdbcType=VARCHAR},
+      LoginId = #{loginid,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LogoPath = #{logopath,jdbcType=VARCHAR},
+      CampaignImageURL = #{campaignimageurl,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="getCompaniesCount" resultType="java.lang.Integer" parameterType="com.bkgc.bean.SearchBean">
+    select count(1)
+    from Auth_Company
+    WHERE 1 = 1
+    <if test="name!=null">
+      and Name like CONCAT('%',#{name},'%')
+    </if>
+    <if test="phone!=null">
+      and Phone like CONCAT('%',#{phone},'%')
+    </if>
+    <if test="startDateTime!=null">
+      and CreateTime &gt;#{startDateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDateTime!=null">
+      and CreateTime &lt;= #{endDateTime,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+
+</mapper>

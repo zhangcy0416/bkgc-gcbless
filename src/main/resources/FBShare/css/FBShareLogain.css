@@ -1,0 +1,95 @@
+body {}
+
+.bodycss {
+	text-align: center;
+}
+
+.headimg {
+	width: 7.69rem;
+	height: 7.17rem;
+	margin: 1rem auto;
+}
+
+.phonebg {
+	margin: 0 auto;
+	width: 8rem;
+	height: 1.1rem;
+	position: relative;
+	margin-bottom: 0.6rem;
+	border: 1px solid #D6D6D6;
+	border-radius: 0.13rem;
+	
+}
+
+.phonediv {
+	width: 7.87rem;
+	height: 1.1rem;
+	padding-left: 0.13rem;
+	outline-style: none;
+	box-shadow: none;
+	appearance:none;
+　　-moz-appearance:none; /* Firefox */
+　　-webkit-appearance:none; /* Safari 和 Chrome */
+}
+
+.codebg {
+	display: inline-block;
+	width: 4.58rem;
+	height: 1.1rem;
+	border: 1px solid #D6D6D6;
+	border-radius: 0.13rem;
+}
+
+.codediv {
+	width: 4.45rem;
+	height: 1.1rem;
+	padding-left: 0.13rem;
+}
+
+.getcode {
+	width: 2.9rem;
+	height: 1.1rem;
+	border: 1px solid #557FD4;
+	border-radius: 0.13rem;
+	color: #4768F3;
+	background-color: transparent;
+	margin-left: 0.4rem;
+}
+
+.cancle {
+	width: 0.53rem;
+	height: 0.53rem;
+	position: absolute;
+	right: 0.2rem;
+	bottom: 0.22rem;
+	background-image: url(../../images/img/fbcancleimg.png);
+	background-repeat: no-repeat;
+	background-size: 0.53rem 0.53rem;
+	background-color: transparent;
+	border: none;
+}
+
+.voiceCode {
+	text-align: right;
+	margin-top: 0.26rem;
+	color: #4768F3;
+	font-size: 0.4rem;
+	margin-right: 0.8rem;
+}
+
+.commit {
+	width: 7.58rem;
+	height: 1.17rem;
+	background-color: #557FD4;
+	color: white;
+	font-size: 0.46rem;
+	margin: 0.7rem 0;
+}
+
+.bottom {
+	color: #A2A1A1;
+	font-size: 0.35rem;
+	width: 8rem;
+	margin: 0 auto;
+	line-height: 0.6rem;
+}

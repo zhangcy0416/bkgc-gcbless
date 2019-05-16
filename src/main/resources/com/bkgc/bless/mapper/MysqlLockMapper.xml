@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.MysqlLockMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.MysqlLock" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="rand_str" property="randstr" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+
+  <insert id="addMysqlLock">
+       INSERT INTO mysql_lock(id,rand_str,create_time,expire_time)
+           VALUES (#{id,jdbcType=VARCHAR},#{randStr,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{expireTime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="queryMysqlLock" resultMap="BaseResultMap">
+       SELECT * FROM mysql_lock WHERE id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="delMysqlLock">
+       DELETE FROM mysql_lock WHERE id = #{id,jdbcType=VARCHAR} AND rand_str = #{randStr,jdbcType=VARCHAR}
+  </delete>
+
+  <delete id="delMysqlLock4Expire">
+       DELETE FROM mysql_lock WHERE id = #{id,jdbcType=VARCHAR}
+  </delete>
+</mapper>

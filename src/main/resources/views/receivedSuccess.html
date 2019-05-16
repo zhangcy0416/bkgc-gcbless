@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>成功领取福包</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/lindaofubao.css">
+	<link rel="stylesheet" href="../css/public.css">
+</head>
+<body>
+	<div style="position: absolute;left: 0;top: 0;width: 100%;height: 100%">
+		<img src="../images/shouye/weichat.png" width="100%" height="100%">
+	</div>
+	<div class="box" style="position: absolute;">
+		<div class="main">
+<!-- 			<div class="banner"> -->
+<!-- 				<img  id="adURL"  src="../images/saomayixia/banner1.png" alt=""> -->
+<!-- 			</div> -->
+			<div class="code_one" id="code_one" style="background: red">
+				<h3 style="margin-top: auto;">11111111111</h3>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/saomalinfubao.js"></script>
+	
+	<script src="../js/code.js"></script>
+	
+	<script type="text/javascript">
+    var json = {};
+    var arr = location.search.substr(1).split('&');
+    arr.forEach(function(item) {
+        var tmp = item.split('=');
+        json[tmp[0]] = tmp[1];
+    });
+    var amount = json.amount;
+	var name = json.name;
+	var delName = decodeURIComponent(name);
+//   	var str="";
+//   	str+='<div class="hb">';
+// 	//str+='<img src="../images/shouye/weichat.png" alt="">';
+// 	str+='<div class="money_mess" id="money_mess">';
+// 	str+='<h3>¥<span>'+amount+'</span></h3>';
+// 	str+='<p>'+delName+'</p>';
+/*				str+='</div>';
+	str+='<p style="text-align: center;">可以在<a style="color:#6eaddd;" href="javascript:void(0);" onClick="saoma_fubao()">福包</a>页面中找到我哦</p>';
+	str+='</div>';*/
+/*										str+='<div class="duih">';
+	str+='<img src="../images/saomayixia/button@2x.png" onClick="dhcp()" alt="">';
+	str+='</div>';	*/	
+// 	$('#code_one').append(str);
+// 	$('#code_one').css("display","block");
+	</script>
+</body>
+</html>

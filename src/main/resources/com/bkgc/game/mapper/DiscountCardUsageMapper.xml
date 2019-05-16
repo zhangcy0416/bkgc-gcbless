@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.DiscountCardUsageMapper">
+    <resultMap id="BaseResultMap" type="com.bkgc.bean.game.DiscountCardUsage">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="card_id" property="cardId" jdbcType="VARCHAR"/>
+        <result column="discount_order_no" property="discountOrderNo" jdbcType="VARCHAR"/>
+        <result column="discount_order_original_amount" property="discountOrderOriginalAmount" jdbcType="DECIMAL"/>
+        <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL"/>
+        <result column="pay_status" property="payStatus" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="reward_id" property="rewardId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, card_id, discount_order_no, discount_order_original_amount, discount_amount, 
+    pay_status, create_time, description, user_id, reward_id
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_discount_card_pay_order
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByCardId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_discount_card_pay_order
+        where card_id = #{cardId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from reward_discount_card_pay_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteByCardId">
+    delete from reward_discount_card_pay_order where card_id = #{cardId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.bkgc.bean.game.DiscountCardUsage">
+    insert into reward_discount_card_pay_order (id, card_id, discount_order_no, 
+      discount_order_original_amount, discount_amount, 
+      pay_status, create_time, description, 
+      user_id, reward_id)
+    values (#{id,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, #{discountOrderNo,jdbcType=VARCHAR}, 
+      #{discountOrderOriginalAmount,jdbcType=DECIMAL}, #{discountAmount,jdbcType=DECIMAL}, 
+      #{payStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{rewardId,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.bkgc.bean.game.DiscountCardUsage">
+        insert into reward_discount_card_pay_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cardId != null">
+                card_id,
+            </if>
+            <if test="discountOrderNo != null">
+                discount_order_no,
+            </if>
+            <if test="discountOrderOriginalAmount != null">
+                discount_order_original_amount,
+            </if>
+            <if test="discountAmount != null">
+                discount_amount,
+            </if>
+            <if test="payStatus != null">
+                pay_status,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="rewardId != null">
+                reward_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="cardId != null">
+                #{cardId,jdbcType=VARCHAR},
+            </if>
+            <if test="discountOrderNo != null">
+                #{discountOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="discountOrderOriginalAmount != null">
+                #{discountOrderOriginalAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="discountAmount != null">
+                #{discountAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payStatus != null">
+                #{payStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="rewardId != null">
+                #{rewardId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.DiscountCardUsage">
+        update reward_discount_card_pay_order
+        <set>
+            <if test="cardId != null">
+                card_id = #{cardId,jdbcType=VARCHAR},
+            </if>
+            <if test="discountOrderNo != null">
+                discount_order_no = #{discountOrderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="discountOrderOriginalAmount != null">
+                discount_order_original_amount = #{discountOrderOriginalAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="discountAmount != null">
+                discount_amount = #{discountAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payStatus != null">
+                pay_status = #{payStatus,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="rewardId != null">
+                reward_id = #{rewardId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.DiscountCardUsage">
+    update reward_discount_card_pay_order
+    set card_id = #{cardId,jdbcType=VARCHAR},
+      discount_order_no = #{discountOrderNo,jdbcType=VARCHAR},
+      discount_order_original_amount = #{discountOrderOriginalAmount,jdbcType=DECIMAL},
+      discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      reward_id = #{rewardId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="queryDiscountAmountByDate" resultType="java.lang.Integer">
+        select ifnull(sum(discount_amount),0) discountAmount from reward_discount_card_pay_order where DATE_FORMAT(create_time,'%Y-%m-%d') = #{date,jdbcType=VARCHAR}
+    </select>
+</mapper>

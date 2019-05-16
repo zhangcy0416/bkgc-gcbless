@@ -1,0 +1,42 @@
+body {
+  background: #ffffff; }
+
+.cz {
+  padding-left: .3rem;
+  padding-top: .3rem;
+  padding-right: .3rem;
+  background: #fff;
+  border-bottom: solid 1px #ccc; }
+  .cz .cz_l {
+    width: 100%;
+    background: #fff; }
+    .cz .cz_l span {
+      float: right; }
+    .cz .cz_l h5 {
+      padding-bottom: .23rem;
+      font-size: .33rem;
+      color: #333333; }
+      .mar{
+        margin-right: -30px;
+      }
+      .cz .cz_l h5 span {
+        font-size: .36rem;
+        color: #d70b24; }
+    .cz .cz_l p {
+      padding-bottom: .25rem;
+      font-size: .26rem;
+      color: #999999; }
+
+.cz_lb {
+  padding-right: .7rem;
+  position: relative; }
+  .cz_lb > span {
+    position: absolute;
+    top: 0.7rem;
+    right: 10px;
+    width: .18rem;
+    height: .33rem;
+    background: url(../images/fubayixia/xiangyoujiantou@2x.png) no-repeat;
+    background-size: 100% 100%; }
+
+/*# sourceMappingURL=fubao_chongzhijilu.css.map */

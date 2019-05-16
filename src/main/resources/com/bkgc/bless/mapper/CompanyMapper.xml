@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bkgc.bless.mapper.CompanyMapper">
+	<resultMap type="com.bkgc.bean.bless.Company" id="entityResultMap">
+        <id property="id" column="Id"/>
+        <id property="name" column="Name"/>
+        <id property="phone" column="Phone"/>
+        <id property="fax" column="Fax"/>
+        <id property="email" column="Email"/>
+        <id property="address" column="Address"/>
+        <id property="postCode" column="PostCode"/>
+        <id property="contactPerson" column="ContactPerson"/>
+        <id property="contactPersonPhone" column="ContactPersonPhone"/>
+        <id property="loginId" column="LoginId"/>
+        <id property="logoPath" column="LogoPath"/>
+        <id property="createTime" column="CreateTime" javaType="java.sql.Timestamp"/>
+	</resultMap>
+	
+	<select id="get" parameterType="String" resultType="com.bkgc.bean.bless.Company" resultMap="entityResultMap">
+		SELECT * from Auth_Company t where t.Id = #{id}
+	</select>
+    <select id="getAll" resultMap="entityResultMap">
+		SELECT * from Auth_Company where 1=1 ${whereExp} 
+		  <if test="sort != null and direction !=null">
+		order by ${sort} ${direction}
+		     </if>
+	</select>
+    <select id="getByPage" resultMap="entityResultMap">
+		SELECT * from Auth_Company where 1=1 ${whereExp} order by ${sort} ${direction} limit #{offset},#{size}
+	</select>
+    <select id="getCount" resultType="Integer">
+		SELECT count(Id) from Auth_Company where 1=1 ${whereExp}
+	</select>
+
+    <insert id="add" parameterType="com.bkgc.bean.bless.Company">
+     insert into Auth_Company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="fax != null" >
+        Fax,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="postCode != null" >
+        PostCode,
+      </if>
+      <if test="contactPerson != null" >
+        ContactPerson,
+      </if>
+      <if test="contactPersonPhone != null" >
+        ContactPersonPhone,
+      </if>
+      <if test="loginId != null" >
+        LoginId,
+      </if>
+      <if test="logoPath != null" >
+        LogoPath,
+      </if>
+      <if test="createTime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="name != null" >
+        #{name},
+      </if>
+      <if test="phone != null" >
+        #{phone},
+      </if>
+      <if test="fax != null" >
+        #{fax},
+      </if>
+      <if test="email != null" >
+        #{email},
+      </if>
+      <if test="address != null" >
+        #{address},
+      </if>
+      <if test="postCode != null" >
+        #{postCode},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson},
+      </if>
+      <if test="contactPersonPhone != null" >
+        #{contactPersonPhone},
+      </if>
+      <if test="loginId != null" >
+        #{loginId},
+      </if>
+      <if test="logoPath != null" >
+        #{logoPath},
+      </if>
+      <if test="createTime != null" >
+        #{createTime},
+      </if>
+    </trim>
+<!--         insert into Auth_Company(Id,Name,Phone,Fax,Email,Address,PostCode,ContactPerson,ContactPersonPhone,LoginId,LogoPath,CreateTime) values(#{id},#{name},#{phone},#{fax},#{email},#{address},#{postCode},#{contactPerson},#{contactPersonPhone},#{loginId},#{logoPath},#{createTime,jdbcType=TIMESTAMP}) -->
+    </insert>
+    <update id="update" parameterType="com.bkgc.bean.bless.Company" >
+        update Auth_Company set Name=#{name},Phone=#{phone},Fax=#{fax},Email=#{email},Address=#{address},PostCode=#{postCode},ContactPerson=#{contactPerson},ContactPersonPhone=#{contactPersonPhone},guid=#{guid},LoginId=#{loginId},LogoPath=#{logoPath},CreateTime=#{createTime,jdbcType=TIMESTAMP} where Id=#{id}
+    </update>
+    
+    <delete id="delete" parameterType="String">
+        delete from Auth_Company where Id=#{id}
+    </delete>
+    
+</mapper>
+
+

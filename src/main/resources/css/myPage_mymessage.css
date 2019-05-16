@@ -1,0 +1,214 @@
+.head {
+  width: 100%;
+  padding-top: .5rem;
+  padding-bottom: .57rem;
+  background: #fff; }
+  .head .head_photo {
+    width: 1.21rem;
+    height: 1.21rem;
+    margin: 0 auto;
+    position: relative;
+    text-align: center; }
+    .head .head_photo img {
+      width: 100%;
+      border-radius: 50% }
+    .head .head_photo .camera {
+      width: .5rem;
+      height: .5rem;
+      background: url(../images/wodeyixia/xiangji@2x.png);
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 0;
+      right: -0.3rem; }
+
+.my_list {
+  width: 100%;
+  margin-top: .3rem; }
+  .my_list ul {
+    width: 100%; }
+    .my_list ul li {
+      padding: .3rem .2rem .3rem .42rem;
+      background: #fff;
+      border-bottom: solid 1px #ccc;
+      color: #999999;
+      font-size: .28rem; }
+      .my_list ul li em {
+        float: right;
+        width: .18rem;
+        height: .33rem;
+        background: url(../images/fubayixia/xiangyoujiantou@2x.png) no-repeat;
+        background-size: 100% 100%;
+        th: .18rem; }
+      .my_list ul li span {
+        float: right;
+        color: #333333;
+        padding-right: .2rem; }
+
+.point {
+  padding: .3rem;
+  font-size: .28rem;
+  color: #999999;
+  line-height: .4rem; }
+
+.real_personal {
+  width: 100%; }
+  .real_personal li {
+    padding: .3rem;
+    background: #fff;
+    border-bottom: solid 1px #ccc;
+    font-size: .28rem;
+    color: #999999; }
+    .real_personal li span {
+      float: right;
+      color: #333333; }
+    .real_personal li input {
+      float: right;
+      width: 70%;
+      text-align: right;
+      outline: none;
+      background: none;
+      border: none; }
+  .real_personal li:nth-child(1) {
+    margin-bottom: .3rem; }
+
+.confirm {
+  display: block;
+  width: 95%;
+  height: .8rem;
+  margin: 0.7rem auto;
+  color: #ffffff;
+  font-size: .3rem;
+  border-radius: .1rem;
+  border: none;
+  background: #d70b24;
+  outline: none;
+  font-size: .3rem; }
+
+.mark {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99; }
+
+.upX {
+  z-index: 100;
+  display: none;
+  width: 6rem;
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  margin-top: 3rem;
+  margin-left: -3rem;
+  background: #f8f8f8;
+  border-radius: .2rem; }
+
+.upW {
+  z-index: 100;
+  display: none;
+  width: 6rem;
+  position: fixed;
+  bottom: 35%;
+  left: 50%;
+  margin-top: 3rem;
+  margin-left: -3rem;
+  background: #f8f8f8;
+  border-radius: .2rem; }
+  .upW h3 {
+    width: 100%;
+    height: .9rem;
+    line-height: .9rem;
+    text-align: center;
+    font-size: .36rem;
+    font-weight: normal; }
+  .upW .nick_entry {
+    margin: 0 .3rem .3rem;
+    position: relative;
+    background: #fff;
+    padding: .2rem .2rem;
+    border: solid 1px #f0f0f0;
+    border-radius: .1rem; }
+    .upW .nick_entry input {
+      outline: none;
+      background: none;
+      border: none;
+      font-size: .36rem; }
+    .upW .nick_entry span {
+      position: absolute;
+      top: 48%;
+      right: .1rem;
+      margin-top: -.225rem;
+      width: .45rem;
+      height: .45rem;
+      background: #000;
+      border-radius: 50%;
+      opacity: .4;
+      color: #fff;
+      text-align: center;
+      line-height: .45rem;
+      font-weight: 600; }
+  .upW .two_btn {
+    width: 100%;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: felx; }
+    .upW .two_btn button {
+      -moz-box-flex: 1.0;
+      -webkit-box-flex: 1.0;
+      box-flex: 1.0;
+      -moz-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      margin: .2rem .4rem;
+      height: .7rem;
+      border: none;
+      background: #ffffff;
+      outline: none;
+      border-radius: .15rem;
+      font-size: .4rem;
+      font-weight: 600;
+      border: solid 1px #f0f0f0; }
+    .upW .two_btn button:nth-child(2) {
+      color: #d70b24; }
+  .upW .tis {
+    font-size: .22rem;
+    text-align: center;
+    color: #ccc; }
+
+.upU {
+  display: none;
+  width: 95%;
+  position: fixed;
+  left: 2.5%;
+  bottom: .2rem;
+  color: #007aff;
+  text-align: center;
+  font-size: .4rem;
+  z-index: 100; }
+  .upU .upU_list {
+    width: 100%;
+    height: 3.6rem;
+    overflow: hidden;
+    border-radius: .2rem; }
+    .upU .upU_list li {
+      height: 1.2rem;
+      line-height: 1.2rem;
+      border-bottom: solid 1px #ccc;
+      background: #fff; }
+    .upU .upU_list li:last-child {
+      border: none; }
+  .upU div {
+    height: 1.2rem;
+    line-height: 1.2rem;
+    margin-top: .1rem;
+    border-radius: .2rem;
+    background: #fff; }
+
+/*# sourceMappingURL=myPage_mymessage.css.map */

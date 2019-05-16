@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="target-densitydpi=device-dpi,width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <!-- 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏。 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 这个主要是根据实际的页面设计的主体色为搭配来进行设置。 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 忽略页面中的数字识别为电话号码,email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <!--<meta name="full-screen" content="yes">-->
+    <!-- QQ强制全屏 -->
+    <!--<meta name="x5-fullscreen" content="true">-->
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>领取福包</title>
+
+    <!--<link rel="stylesheet" href="css/weixin.css"/>-->
+    <style type="text/css">
+        .spinner {
+            margin: 100px auto 0;
+            width: 150px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 30px;
+            height: 30px;
+            background-color: #67CF22;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+            animation: bouncedelay 1.4s infinite ease-in-out;
+            /* Prevent first frame from flickering when animation starts */
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes bouncedelay {
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0.0)
+            }
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+
+        @keyframes bouncedelay {
+            0%,
+            80%,
+            100% {
+                transform: scale(0.0);
+                -webkit-transform: scale(0.0);
+            }
+            40% {
+                transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+            }
+        }
+
+        .toast-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: fixed;
+            top: 60%;
+            width: 100%;
+            z-index: 100;
+            animation: toastShow .3s linear;
+            -webkit-animation: toastShow .3s linear;
+        }
+
+        .toast {
+            background: rgba(0, 0, 0, .8);
+            padding: 5px;
+            border: solid;
+            border-width: 0;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        @keyframes toastShow {
+            from {
+                top: 100%;
+                opacity: .5
+            }
+            to {
+                top: 60%;
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes toastShow {
+            from {
+                top: 100%;
+                opacity: .5
+            }
+            to {
+                top: 60%;
+                opacity: 1
+            }
+        }
+
+        @-moz-keyframes toastShow {
+            from {
+                top: 100%;
+                opacity: .5
+            }
+            to {
+                top: 60%;
+                opacity: 1
+            }
+        }
+
+        @-ms-keyframes toastShow {
+            from {
+                top: 100%;
+                opacity: .5
+            }
+            to {
+                top: 60%;
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #f0f0f0;">
+<img style="width: 100%;margin-top: 35%;max-width: 750px;" src="images/use_wechat.png" id="use_wechat" hidden="hidden"/>
+<p id="user_tip" style="width: 100%;text-align: center;margin-top: 30%;color: #6c6c6c;"></p>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/BaseUrl.js"></script>
+<script type="text/javascript">
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    var search = window.location.search;
+    var random, redirect_url, base_url;
+    if (search) {
+        var randNum = getQueryString("randNum");
+        if (randNum) {
+            random = randNum;
+        } else {
+            random = "9LGmJX97a";
+        }
+    } else {
+        random = "9LGmJX97a";
+    }
+    base_url = window.baseUrl;
+    redirect_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxe921b5cf2891f3a5&redirect_uri=' + encodeURIComponent(base_url + "/index.html") + '&response_type=code&scope=snsapi_userinfo&state=' + random + '#wechat_redirect';
+
+    var weixin = {
+        config: {
+            url: redirect_url,
+            base_api: base_url,
+            login_path: '/wx/login',
+            register_path: '/envelope/loginByWechat.html',
+            fubao_path: '/envelope/getFubaoSuccess.html'
+        },
+        isweixin: function () {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        showLoading: function () {
+            var html = '<div class="spinner">';
+            html += '<div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div>';
+            $(html).appendTo($("body"));
+        },
+        dismissLoading: function () {
+            $(".spinner").remove();
+        },
+        dismissToast: function () {
+            var container = $('.toast-container');
+            if (container) {
+                container.remove();
+            }
+        },
+        showToast: function (msg) {
+            var html = '<div class="toast-container">';
+            html += '<span class="toast" id="toast"></span></div>';
+            $('#toast').innerText = msg;
+
+            setTimeout(function () {
+                weixin.dismissToast();
+            }, 3 * 1000);
+        },
+        getUser: function (code) {
+            $.ajax({
+                type: 'GET',
+                url: weixin.config.base_api + weixin.config.login_path + '?code=' + code,
+                cache: false,
+                async: false,
+                success: function (json) {
+                    console.log("getUserSuccess:" + json);
+                    var user = JSON.parse(json);
+                    if (user && user.code == 1000) {
+                        // 用户已注册
+                        window.location.replace(weixin.config.base_api + weixin.config.fubao_path + '?' +
+                            "userId=" + encodeURIComponent(user.data.guid) +
+                            "&accesstoken=" + encodeURIComponent(user.data.access_token) +
+                            "&random=" + weixin.random +
+                            "&type=wechat");
+                    } else if (user && user.code == 40163) {
+                        var msg = user.msg ? user.msg : "请重新扫码";
+                        weixin.showToast(msg);
+                    } else {
+                        // TODO 用户不存在或其他异常情况，跳转注册界面
+                        window.location.replace(weixin.config.base_api + weixin.config.register_path + '?' +
+                            "facePhotoPath=" + encodeURIComponent(user.data.headimgurl) +
+                            "&nickName=" + encodeURIComponent(user.data.nickname) +
+                            "&openId=" + encodeURIComponent(user.data.openid) +
+                            "&sex=" + encodeURIComponent(user.data.sex) +
+                            "&unionId=" + encodeURIComponent(user.data.unionid) +
+                            "&random=" + weixin.random);
+                    }
+                },
+                error: function (err) {
+                    console.log("getUserFail:" + err);
+                    weixin.showToast(err);
+                }
+            })
+        },
+        getUserInfo: function () {
+            var code = getQueryString('code');
+            var state = getQueryString('state');
+            console.log("code&state:", code + ";" + state);
+            if (code) {
+                weixin.random = state;
+                weixin.showLoading();
+                weixin.getUser(code);
+                weixin.dismissLoading();
+            } else {
+                window.location.replace(weixin.config.url);
+            }
+        }
+
+    };
+
+    (function () {
+        $('#use_wechat').hide();
+        if (weixin.isweixin()) {
+            weixin.getUserInfo();
+        } else {
+            $('#user_tip').text("请在微信中打开~");
+            $('#use_wechat').show();
+        }
+    })();
+</script>
+</body>
+
+</html>

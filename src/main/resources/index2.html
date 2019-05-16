@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+
+		<title>北控国彩福包夺宝游戏</title>
+	</head>
+
+	<body>
+		<h1>href</h1>
+		<p id="href">href empty</p>
+		<h1>search</h1>
+		<p id="search">search empty</p>
+		
+		<script type="text/javascript">
+			var href = window.location.href;
+			if(href){
+				document.getElementById('href').innerText = href;
+			}
+			var search = window.location.search;
+			if(search){
+				document.getElementById('search').innerText = search;
+			}
+		</script>
+	</body>
+
+</html>

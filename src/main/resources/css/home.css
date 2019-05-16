@@ -1,0 +1,127 @@
+.mian {
+  width: 100%;
+  -webkit-flex: 1; }
+  .mian .guocai_tx {
+    text-align: center;
+    padding-top: .34rem; }
+    .mian .guocai_tx img {
+      width: 1.2rem;
+      height: 1.65rem; }
+  .mian .ls_tab {
+    margin-left: .9rem;
+    margin-right: .9rem; }
+    .mian .ls_tab ul {
+      width: 2rem;
+      margin: 0 auto;
+      overflow: hidden;
+      margin-top: .56rem;
+      margin-bottom: .25rem; }
+      .mian .ls_tab ul li {
+        float: left;
+        color: #818181;
+        font-size: .32rem;
+        font-weight: 500; }
+      .mian .ls_tab ul li:last-child {
+        margin-left: .57rem; }
+      .mian .ls_tab ul li.mark {
+        border-bottom: solid #d70b24;
+        color: #d70b24;
+        padding-bottom: .19rem; }
+    .mian .ls_tab .lr {
+      width: 100%; }
+      .mian .ls_tab .lr .btm {
+        padding-top: .54rem;
+        padding-bottom: .15rem;
+        border-bottom: solid 1px #ccc; }
+      .mian .ls_tab .lr input {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: none; }
+      .mian .ls_tab .lr .btm {
+        position: relative; }
+        .mian .ls_tab .lr .btm .login_path_btn {
+          background: none;
+          outline: none;
+          position: absolute;
+          bottom: .1rem;
+          right: 0;
+          padding: 0.1rem;
+          border: solid 1px #d70b24;
+          border-radius: 15px;
+          float: right;
+          color: #d70b24;
+          font-size: .22rem; }
+      .mian .ls_tab .lr .forget {
+        position: absolute;
+        bottom: .1rem;
+        right: 0;
+        font-size: .22rem;
+        color: #828282; }
+      .mian .ls_tab .lr ._btn {
+        width: 100%;
+        margin-top: .85rem; }
+        .mian .ls_tab .lr ._btn button {
+          display: block;
+          background: none;
+          border: none;
+          outline: none;
+          background: #d70b24;
+          width: 100%;
+          height: .8rem;
+          border-radius: .4rem;
+          font-size: .3rem;
+          color: #fff; }
+  .mian .other_login {
+    width: 100%; }
+    .mian .other_login .other_login_xian {
+      margin-left: .2rem;
+      margin-right: .2rem;
+      margin-top: 1.54rem;
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: flex; }
+      .mian .other_login .other_login_xian hr {
+        height: 1px;
+        -moz-box-flex: 1.0;
+        -webkit-box-flex: 1.0;
+        box-flex: 1.0;
+        -moz-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        border-color: #f1f1f1; }
+      .mian .other_login .other_login_xian p {
+        margin-top: -.15rem;
+        font-size: .22rem;
+        color: #828282; }
+    .mian .other_login .other_login_list {
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: flex;
+      padding-top: .58rem; }
+      .mian .other_login .other_login_list button {
+        display: block;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex: 1;
+        -moz-flex: 1;
+        flex: 1;
+        text-align: center;
+        outline: none;
+        border: none;
+        background: none; }
+        .mian .other_login .other_login_list button img {
+          display: inline-block;
+          width: .82rem;
+          height: .82rem; }
+
+/*# sourceMappingURL=home.css.map */

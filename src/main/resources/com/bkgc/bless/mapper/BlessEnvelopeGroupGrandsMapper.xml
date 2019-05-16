@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.bless.mapper.BlessEnvelopeGroupGrandsMapper" >
+  <resultMap id="BaseResultMap" type="com.bkgc.bean.bless.BlessEnvelopeGroupGrands" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="GroupId" property="groupid" jdbcType="VARCHAR" />
+    <result column="Count" property="count" jdbcType="INTEGER" />
+    <result column="Univalence" property="univalence" jdbcType="DECIMAL" />
+    <result column="OriginalCount" property="originalCount" jdbcType="INTEGER" />
+    <result column="OriginalAmount" property="originalAmount" jdbcType="DECIMAL" />
+    <result column="CreateTime" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, GroupId, Count, Univalence
+  </sql>
+  
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelopeGroup_grand
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+    <select id="selectByGroupId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BE_BlessEnvelopeGroup_grand
+    where GroupId = #{GroupId,jdbcType=VARCHAR}  and count != 0
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BE_BlessEnvelopeGroup_grand
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insertSelective" parameterType="com.bkgc.bean.bless.BlessEnvelopeGroupGrands" >
+    insert into BE_BlessEnvelopeGroup_grand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="groupid != null" >
+        GroupId,
+      </if>
+      <if test="count != null" >
+        Count,
+      </if>
+      <if test="univalence != null" >
+        Univalence,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="univalence != null" >
+        #{univalence,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.bless.BlessEnvelopeGroupGrands" >
+    update BE_BlessEnvelopeGroup_grand
+    <set >
+      <if test="groupid != null" >
+        GroupId	 = #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        Count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="univalence != null" >
+        Univalence = #{univalence,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+  <insert id="insertGroupGrandList" parameterType="java.util.List" >
+    insert into BE_BlessEnvelopeGroup_grand(Id,GroupId,Count,Univalence,OriginalCount,OriginalAmount,CreateTime)
+    VALUES
+
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id},#{item.groupid},#{item.count},#{item.univalence},#{item.originalCount},#{item.originalAmount},#{item.createTime})
+    </foreach>
+
+  </insert>
+
+
+</mapper>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bkgc.game.mapper.RewardOfUserMapper">
+    <resultMap id="BaseResultMap" type="com.bkgc.bean.game.RewardOfUser">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="reward_id" property="rewardId" jdbcType="VARCHAR"/>
+        <result column="reward_code" property="rewardCode" jdbcType="VARCHAR"/>
+        <result column="reward_name" property="rewardName" jdbcType="VARCHAR"/>
+        <result column="reward_type" property="rewardType" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="gained_time" property="gainedTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="expired" property="expired" jdbcType="TIMESTAMP"/>
+        <result column="use_time" property="useTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- create by xuxin 2018-07-14 -->
+    <resultMap id="NewBaseResultMap" type="com.bkgc.bean.game.dto.RewardOfUserDto">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="reward_id" property="rewardId" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="gained_time" property="gainedTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="expired" property="expired" jdbcType="TIMESTAMP"/>
+        <result column="reward_code" property="rewardCode" jdbcType="VARCHAR"/>
+        <result column="reward_name" property="rewardName" jdbcType="VARCHAR"/>
+        <result column="reward_type" property="rewardType" jdbcType="VARCHAR"/>
+        <result column="use_time" property="useTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="GameBless" type="com.bkgc.game.model.vo.GameBlessVo">
+        <result column="reward_code" property="rewardCode" jdbcType="VARCHAR"/>
+        <result column="num" property="num" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, reward_id, user_id, gained_time, status, expired,reward_code,reward_name,reward_type, use_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from reward_of_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.bkgc.bean.game.RewardOfUser">
+    insert into reward_of_user (id, reward_id, user_id, 
+      gained_time, status, expired, use_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rewardId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{gainedTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{expired,jdbcType=TIMESTAMP},
+      #{useTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.bkgc.bean.game.RewardOfUser">
+        insert into reward_of_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="rewardId != null">
+                reward_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="gainedTime != null">
+                gained_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="expired != null">
+                expired,
+            </if>
+            <if test="useTime != null">
+                use_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="rewardId != null">
+                #{rewardId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="gainedTime != null">
+                #{gainedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="expired != null">
+                #{expired,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useTime != null">
+                #{useTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bkgc.bean.game.RewardOfUser">
+        update reward_of_user
+        <set>
+            <if test="rewardId != null">
+                reward_id = #{rewardId,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="gainedTime != null">
+                gained_time = #{gainedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="expired != null">
+                expired = #{expired,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rewardCode != null">
+                reward_code = #{rewardCode,jdbcType=VARCHAR},
+            </if>
+            <if test="rewardName != null">
+                reward_name = #{rewardName,jdbcType=VARCHAR},
+            </if>
+            <if test="rewardType != null">
+                reward_type = #{rewardType,jdbcType=VARCHAR},
+            </if>
+            <if test="useTime != null">
+                use_time = #{useTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bkgc.bean.game.RewardOfUser">
+    update reward_of_user
+    set reward_id = #{rewardId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      gained_time = #{gainedTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      expired = #{expired,jdbcType=TIMESTAMP},
+      use_time = #{useTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="selectByuserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where user_id = #{guid,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="selectByRewardType" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where reward_type=#{type,jdbcType=VARCHAR} and status =0 and reward_type != 1 order by gained_time desc
+    </select>
+
+
+    <select id="selectByObject" resultMap="BaseResultMap" parameterType="com.bkgc.bean.game.RewardOfUser">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where 1=1 and reward_type != 1
+        <if test="rewardId != null">
+            and reward_id = #{rewardId,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null">
+            and user_id = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="gainedTime != null">
+            and gained_time = #{gainedTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="status != null">
+            and status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="expired != null">
+            and expired = #{expired,jdbcType=TIMESTAMP}
+        </if>
+        <if test="rewardCode != null">
+            and NOW() &lt; expired
+            and reward_code=#{rewardCode,jdbcType=VARCHAR}
+        </if>
+        <if test="useTime != null">
+            and use_time = #{useTime,jdbcType=TIMESTAMP}
+        </if>
+        ORDER BY `status` ASC,expired DESC
+        <if test="pagestart != null">
+            limit #{pagestart,jdbcType=INTEGER},#{pageLimit,jdbcType=INTEGER}
+        </if>
+
+    </select>
+
+    <select id="getRewardCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(1) FROM reward_of_user WHERE user_id=#{userId,jdbcType=VARCHAR}
+  </select>
+
+    <select id="selectRewardsByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where user_id = #{guid,jdbcType=VARCHAR} ORDER BY gained_time desc
+    </select>
+
+
+    <select id="selectExpireRewardList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where expired > now() and expired <![CDATA[<=#{time,jdbcType=TIMESTAMP} ]]>
+        and status=0 group by user_id,reward_id
+    </select>
+
+
+    <select id="showMultipleCards" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        WHERE
+        user_id = #{guid,jdbcType=VARCHAR}
+        AND reward_type = #{rewardType,jdbcType=VARCHAR}
+        AND `status` = 0
+        ORDER BY
+        expired ASC,
+        reward_name DESC;
+    </select>
+
+    <select id="getAllNotUsedCard" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where status = 0 AND expired <![CDATA[<=]]> NOW()
+    </select>
+
+    <select id="selectRewardOfUser" resultMap="NewBaseResultMap" parameterType="com.bkgc.bean.game.dto.RewardOfUserDto">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where 1=1 and reward_type != 1
+        <if test="guid != null">
+            and user_id = #{guid,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="condition !=null">
+            ORDER BY ${condition} desc
+        </if>
+    </select>
+
+
+    <select id="selectRewardOfUserList" resultMap="NewBaseResultMap"
+            parameterType="com.bkgc.bean.game.dto.RewardOfUserDto">
+        select
+        <include refid="Base_Column_List"/>
+        from reward_of_user
+        where 1=1 and reward_type != 1
+        <if test="userId != null">
+            and user_id = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="id != null">
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryGameBlessList" resultMap="GameBless" >
+        select reward_code,count(1) num from reward_of_user where DATE_FORMAT(gained_time,'%Y-%m-%d') = #{date,jdbcType=VARCHAR} group by reward_code
+    </select>
+
+</mapper>

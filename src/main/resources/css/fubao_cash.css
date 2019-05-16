@@ -1,0 +1,112 @@
+.duijiang {
+  position: relative;
+  background: #fff; }
+  .duijiang div {
+    padding-left: .3rem;
+    padding-right: .3rem;
+    height: 1.45rem;
+    line-height: 1.45rem;
+    font-size: .3rem;
+    color: #333333; }
+    .duijiang div span {
+      float: right;
+      font-size: .38rem; }
+  .duijiang div:nth-child(2) {
+    height: 1.1rem;
+    line-height: 1.1rem;
+    border-top: solid 1px #dadada; }
+    .duijiang div:nth-child(2) span {
+      color: #fcc050; }
+
+.sum {
+  width: 100%;
+  height: 1.1rem;
+  line-height: 1.1rem;
+  padding-left: .46rem;
+  background: #fff;
+  margin-top: .24rem; }
+  .sum input {
+    margin-left: .2rem;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: .28rem;
+    color: #999999; }
+  .sum span {
+    float: right;
+    color: #fcc050;
+    padding-right: .3rem; }
+
+.account {
+  width: 100%;
+  margin-top: .72rem;
+  background: #fff; }
+  .account ul {
+    width: 100%;
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: felx; }
+    .account ul li {
+      -moz-box-flex: 1.0;
+      -webkit-box-flex: 1.0;
+      box-flex: 1.0;
+      -moz-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+      margin: 0 .2rem;
+      padding-top: .2rem; }
+      .account ul li img {
+        width: 50%;
+        height: 21px;
+        margin: 3px; }
+    .account ul li.acc {
+      border-bottom: solid 2px #fbc04f; }
+  .account > div {
+    width: 100%; }
+    .account > div > div {
+      height: 1.1rem;
+      border-bottom: solid 1px #dadada; }
+      .account > div > div span {
+        padding-left: .3rem;
+        line-height: 1.1rem; }
+      .account > div > div input {
+        float: right;
+        height: 1.1rem;
+        width: 70%;
+        border: none;
+        background: none;
+        outline: none;
+        text-align: right;
+        padding-right: .3rem;
+        font-size: .3rem; }
+    .account > div .account_tip {
+      height: .75rem;
+      width: 100%; }
+      .account > div .account_tip p {
+        float: right;
+        padding-right: .3rem;
+        padding-top: .1rem; }
+      .account > div .account_tip .account_img {
+        display: inline-block;
+        width: .26rem;
+        height: .26rem;
+        background: url(../images/fubayixia/zhuyi@2x.png);
+        background-size: 100% 100%;
+        margin-right: .2rem; }
+
+.chong_btn {
+  display: block;
+  width: 95%;
+  height: .8rem;
+  margin: .7rem auto;
+  border: none;
+  border-radius: .1rem;
+  background: #fbc04f;
+  outline: none;
+  font-size: .34rem;
+  color: #fff; }
+
+/*# sourceMappingURL=fubao_cash.css.map */

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bkgc.bless.mapper.SiteAdministratorMapper">
+	<resultMap type="com.bkgc.bean.bless.SiteAdministrator" id="entityResultMap">
+        <id property="id" column="Id"/>
+        <id property="name" column="Name"/>
+        <id property="phone" column="Phone"/>
+        <id property="email" column="Email"/>
+        <id property="loginId" column="LoginId"/>
+        <id property="roleId" column="RoleId"/>
+        <id property="createAdminId" column="CreateAdminId"/>
+        <id property="createTime" column="CreateTime" javaType="java.sql.Timestamp"/>
+        <id property="status" column="Status"/>
+        <id property="userName" column="UserName"/>
+        <id property="roleName" column="RoleName"/>
+	</resultMap>
+	
+	<select id="get" parameterType="String" resultType="com.bkgc.bean.bless.SiteAdministrator" resultMap="entityResultMap">
+		SELECT t.*,a.UserName,a.Status,b.Name as RoleName from Auth_SiteAdministrator t inner join Auth_LoginCredential a on t.Id=a.UserId left join Auth_Role b on t.RoleId=b.Id where t.Id = #{id}
+	</select>
+    <select id="getAll" resultMap="entityResultMap">
+		SELECT t.*,a.UserName,a.Status,b.Name as RoleName from Auth_SiteAdministrator t inner join Auth_LoginCredential a on t.Id=a.UserId left join Auth_Role b on t.RoleId=b.Id 
+	</select>
+    <select id="getByPage" resultMap="entityResultMap">
+		SELECT t.*,a.UserName,a.Status,b.Name as RoleName from Auth_SiteAdministrator t inner join Auth_LoginCredential a on t.Id=a.UserId left join Auth_Role b on t.RoleId=b.Id where 1=1 ${whereExp} order by ${sort} ${direction} limit #{offset},#{size}
+	</select>
+    <select id="getCount" resultType="Integer">
+		SELECT count(Id) from Auth_SiteAdministrator t where 1=1 ${whereExp}
+	</select>
+
+    <insert id="add" parameterType="com.bkgc.bean.bless.SiteAdministrator"> 
+        insert into Auth_SiteAdministrator(Id,Name,Phone,Email,LoginId,RoleId,CreateAdminId,CreateTime) values(#{id},#{name},#{phone},#{email},#{loginId},#{roleId},#{createAdminId},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="update" parameterType="com.bkgc.bean.bless.SiteAdministrator" >
+        update Auth_SiteAdministrator set Name=#{name},Phone=#{phone},Email=#{email},LoginId=#{loginId},RoleId=#{roleId},CreateAdminId=#{createAdminId},guid=#{guid},CreateTime=#{createTime,jdbcType=TIMESTAMP} where Id=#{id}
+    </update>
+    
+    <delete id="delete" parameterType="String">
+        delete from Auth_SiteAdministrator where Id=#{id}
+    </delete>
+    
+</mapper>
+
+

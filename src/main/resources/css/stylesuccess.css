@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0 0;padding:0 0;}
+div{margin:0 auto;height: 100%;width: 100%;}
+#blesssuccess{background-size:100% 100%; background-image: url(../images/img/back.png);background-repeat:no-repeat; position:fixed; }
+#blesssuccess #blesssuccess-t{width: 100%;height: 60%;}
+#blesssuccess #blesssuccess-t .money{height: 15%;float: left;width: 40%;margin-left: 27%;font-size: 25px;color: brown;position: absolute;top:30%;}
+#blesssuccess #blesssuccess-t .info{height: 10%;width:50%;float: left;font-size: 30px;position: absolute;top:14%;left: 24%;color: white;}
+/* #blesssuccess #blesssuccess-t .info .p1{margin-left:40%;margin-top:5%;height: 30%;} */
+#blesssuccess #blesssuccess-t .info .p2{margin-top: 10%;height: 60%;text-align: center;font-size:32px;}
+#blesssuccess #blesssuccess-t .money p{margin-top:23%;margin-left: 15%;margin-right: 10%;text-align: center;}
+#blesssuccess #blesssuccess-f{width:50%;height: 40%;float: left;margin-top:10%;}
+#blesssuccess-f img{width:100%;height: 20%;margin-left: 47%;}
